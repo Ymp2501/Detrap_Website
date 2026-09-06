@@ -1,0 +1,84 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.dialWrap {
+  position: relative;
+  height: 420px;
+  touch-action: none;
+}
+
+.zoneReadout {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.zoneBadge {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.dragHint {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--muted-on-ink);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pdcCard {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left-width: 4px;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.pdcCardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.pdcCardBody {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted-on-ink);
+}
+
+.disclaimer {
+  margin-top: 36px;
+  padding: 18px 22px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 92, 77, 0.08);
+  border: 1px solid rgba(255, 92, 77, 0.3);
+  color: var(--muted-on-ink);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  max-width: 900px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .dialWrap {
+    height: 340px;
+  }
+}

@@ -1,0 +1,129 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navScrolled {
+  background: rgba(15, 12, 38, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--paper-100);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.wordmark span {
+  color: var(--gold-500);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted-on-ink);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.links a:hover {
+  color: var(--paper-100);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.langToggle {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.langToggle button {
+  border: none;
+  background: transparent;
+  color: var(--muted-on-ink);
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.langToggle button.active {
+  background: var(--gold-500);
+  color: var(--ink-950);
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--paper-100);
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobilePanel {
+  position: fixed;
+  inset: 0;
+  top: 62px;
+  background: rgba(15, 12, 38, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px;
+}
+
+.mobilePanel a {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--paper-100);
+  text-decoration: none;
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 900px) {
+  .links, .right .btn {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+  .right {
+    gap: 10px;
+  }
+}

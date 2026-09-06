@@ -1,0 +1,70 @@
+.missionBlock {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.missionLabel {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.missionBody {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--ink-900);
+}
+
+.boardLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-on-paper);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.member {
+  background: var(--paper-100);
+  border: 1px solid var(--paper-300);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(32, 26, 69, 0.3);
+  border-color: var(--gold-500);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-500), var(--coral-500));
+  margin-bottom: 12px;
+}
+
+.memberName {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink-900);
+}
+
+.memberRole {
+  font-size: 0.82rem;
+  color: var(--muted-on-paper);
+}

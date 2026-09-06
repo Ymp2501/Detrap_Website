@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "guide": "Guide library",
+    "course": "Course",
+    "reports": "Platform reports",
+    "pdc": "PDC model",
+    "schools": "For schools",
+    "about": "About",
+    "cta": "Get the workbook"
+  },
+  "hero": {
+    "eyebrow": "De-Trap Initiative · Research & Outreach",
+    "title": "Free money isn't free.",
+    "subtitle": "A student-led initiative teaching grades 9–12 to read the fine print on BNPL, instant loan apps and \"pay in 3 easy parts\" before it reads them.",
+    "mission": "We turn confusing credit products into sixty-second maths anyone can do.",
+    "ctaPrimary": "Get the workbook",
+    "ctaSecondary": "Bring De-Trap to your school",
+    "stat1Value": "25",
+    "stat1Suffix": " min",
+    "stat1Label": "to work through the full workbook",
+    "stat2Value": "6",
+    "stat2Suffix": "",
+    "stat2Label": "course modules, zero jargon",
+    "stat3Value": "122",
+    "stat3Suffix": "%",
+    "stat3Label": "the real yearly cost behind \"just ₹100\""
+  },
+  "guide": {
+    "eyebrow": "01 · The library",
+    "title": "The debt trap guide library",
+    "description": "Everything De-Trap has published, in one place. No login, no email wall. Download, print, or hand it to a friend.",
+    "downloadLabel": "Download PDF",
+    "pages": "pages",
+    "items": {
+      "workbook": {
+        "title": "The Debt Trap: a survival guide",
+        "description": "The full illustrated workbook. Twelve pages, one pen, the maths that keeps you out of a trap.",
+        "tag": "Workbook · Grades 8–12"
+      },
+      "legal": {
+        "title": "Government schemes & legal reference",
+        "description": "RBI digital lending rules, your rights against recovery agents, and where to complain.",
+        "tag": "Reference"
+      },
+      "complete": {
+        "title": "The Debt Trap: complete research guide",
+        "description": "The full research behind the workbook, with sourcing, for teachers and reviewers.",
+        "tag": "Research"
+      }
+    }
+  },
+  "course": {
+    "eyebrow": "02 · Flagship course",
+    "title": "Financial literacy, in six stops",
+    "description": "A short course you can finish in one sitting or one class period. Move along the track, module by module.",
+    "moduleLabel": "Module",
+    "of": "of",
+    "startModule": "Open module",
+    "keyConcepts": "Key concepts",
+    "tryIt": "Try it yourself",
+    "modules": {
+      "m1": { "title": "What is credit", "short": "Credit, debt and interest" },
+      "m2": { "title": "How interest actually works", "short": "Simple vs. compound" },
+      "m3": { "title": "The three-party lending structure", "short": "Who is really lending" },
+      "m4": { "title": "Spotting manipulation tactics", "short": "The brain traps" },
+      "m5": { "title": "Red flags and the PDC model", "short": "Green, yellow, red" },
+      "m6": { "title": "If you're already in trouble", "short": "Getting out, safely" }
+    }
+  },
+  "reports": {
+    "eyebrow": "03 · Original research",
+    "title": "How these platforms actually work",
+    "description": "De-Trap's own analysis of BNPL and instant loan products in India: who really lends the money, what the fees actually are, and what happens if you miss a payment. Flip a card for the full breakdown.",
+    "flip": "Flip for details",
+    "flipBack": "Back to summary",
+    "lender": "Real lender",
+    "feeStructure": "Fee structure",
+    "rollover": "Rollover / missed payment",
+    "dataPractice": "Data practice",
+    "status": "Regulatory status",
+    "suggested": "Worth covering next"
+  },
+  "pdc": {
+    "eyebrow": "04 · De-Trap's internal tool",
+    "title": "The PDC model",
+    "description": "Predict, detect, correct. De-Trap's own guidebook framework for talking about risk, not a validated academic instrument. Drag the dial to see how answers move someone between zones.",
+    "disclaimer": "This is a De-Trap teaching tool built for workshops, not a clinical or academic diagnostic. Treat the zone as a conversation starter, not a verdict.",
+    "predict": "Predict",
+    "predictBody": "Spot the conditions that make borrowing likely before money changes hands: no savings buffer, pressure to keep up, unclear costs.",
+    "detect": "Detect",
+    "detectBody": "Notice the signs once borrowing has started: missed dates, hidden apps, borrowing to repay.",
+    "correct": "Correct",
+    "correctBody": "The concrete next step for each zone, from a checklist to telling one adult.",
+    "zoneGreen": "Clear",
+    "zoneYellow": "Exposed",
+    "zoneRed": "Trapped",
+    "dragHint": "Drag to rotate the dial"
+  },
+  "schools": {
+    "eyebrow": "05 · Partner with us",
+    "title": "Bring De-Trap to your school",
+    "description": "A two-day workshop that turns this workbook into a classroom experience, run by students, for students.",
+    "day1": "Day one",
+    "day2": "Day two",
+    "provide": "What your school provides",
+    "contact": "Book a workshop",
+    "contactBody": "Tell us about your school and we'll get back within a few working days.",
+    "form": {
+      "school": "School name",
+      "contactName": "Contact person",
+      "email": "Email",
+      "grade": "Grade levels",
+      "message": "Anything else we should know",
+      "submit": "Request a workshop"
+    }
+  },
+  "about": {
+    "eyebrow": "06 · Who we are",
+    "title": "About De-Trap",
+    "description": "De-Trap Initiative is a student-led research and outreach project. We read the terms and conditions so our peers don't have to learn the hard way.",
+    "mission": "Our mission",
+    "missionBody": "Nobody gets trapped by a loan they understood. We exist to close the gap between what these products advertise and what they actually cost.",
+    "board": "Founding board"
+  },
+  "footer": {
+    "tagline": "The trap was never the money. It was the silence.",
+    "qrCaption": "Scan to access the full guide and workbook",
+    "links": "Explore",
+    "contact": "Contact",
+    "rights": "De-Trap Initiative. Research & outreach.",
+    "sourcesNote": "Every figure in this site traces to a cited source: RBI Digital Lending Directions, OECD/INFE, and De-Trap's own published research."
+  },
+  "common": {
+    "language": "Language",
+    "placeholder": "Placeholder",
+    "close": "Close"
+  }
+}

@@ -1,0 +1,121 @@
+.wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.checkboxChecked {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+}
+
+.itemText {
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--muted-on-ink);
+  flex: 1;
+}
+
+.points {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--gold-400);
+}
+
+.meterWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meterTrack {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--teal-500) 0%,
+    var(--teal-500) 10%,
+    var(--gold-500) 10%,
+    var(--gold-500) 35%,
+    #e08a2a 35%,
+    #e08a2a 65%,
+    var(--coral-500) 65%,
+    var(--coral-500) 100%
+  );
+  overflow: visible;
+}
+
+.marker {
+  position: absolute;
+  top: -8px;
+  width: 4px;
+  height: 32px;
+  background: var(--paper-100);
+  border-radius: 2px;
+  transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 12px rgba(250, 246, 237, 0.8);
+}
+
+.bandRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--muted-on-ink);
+}
+
+.scoreOut {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.scoreValue {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--paper-100);
+}
+
+.bandLabel {
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}

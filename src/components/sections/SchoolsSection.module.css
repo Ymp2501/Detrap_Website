@@ -1,0 +1,143 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dayCard {
+  background: var(--paper-100);
+  border: 1px solid var(--paper-300);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+}
+
+.dayLabel {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.dayList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted-on-paper);
+}
+
+.provideCard {
+  background: var(--ink-900);
+  color: var(--paper-100);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+}
+
+.provideCard h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.provideList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted-on-ink);
+}
+
+.formCard {
+  background: var(--paper-100);
+  border: 1px solid var(--paper-300);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.formCard h3 {
+  font-size: 1.3rem;
+  color: var(--ink-900);
+  margin-bottom: 6px;
+}
+
+.formDesc {
+  font-size: 0.9rem;
+  color: var(--muted-on-paper);
+  margin-bottom: 22px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formField.full {
+  grid-column: 1 / -1;
+}
+
+.formField label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-800);
+}
+
+.formField input,
+.formField textarea {
+  border: 1px solid var(--paper-300);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  background: #fff;
+  color: var(--ink-900);
+}
+
+.formField textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submitRow {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.emailNote {
+  font-size: 0.78rem;
+  color: var(--muted-on-paper);
+  font-style: italic;
+}
+
+.successMsg {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--teal-500);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}

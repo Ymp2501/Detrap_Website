@@ -1,0 +1,92 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-on-ink);
+}
+
+.field input[type="range"] {
+  accent-color: var(--gold-500);
+}
+
+.field input[type="number"] {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  color: var(--paper-100);
+  padding: 10px 12px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.resultRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.resultRow.simple {
+  border-left: 3px solid var(--teal-500);
+}
+
+.resultRow.compound {
+  border-left: 3px solid var(--coral-500);
+}
+
+.resultLabel {
+  font-size: 0.85rem;
+  color: var(--muted-on-ink);
+}
+
+.resultValue {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--paper-100);
+  transition: color 0.3s ease;
+}
+
+.diff {
+  text-align: center;
+  padding-top: 6px;
+  font-size: 0.95rem;
+  color: var(--gold-400);
+}
+
+@media (max-width: 780px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+}

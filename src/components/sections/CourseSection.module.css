@@ -1,0 +1,157 @@
+.trackCanvasWrap {
+  height: 160px;
+  margin-bottom: 8px;
+}
+
+.pillRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted-on-ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill:hover {
+  border-color: rgba(245, 197, 24, 0.5);
+  color: var(--paper-100);
+}
+
+.pillActive {
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+  color: var(--ink-950);
+  border-color: transparent;
+}
+
+.pillNum {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.68rem;
+}
+
+.pillActive .pillNum {
+  background: rgba(24, 20, 51, 0.25);
+}
+
+.panel {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.panelHead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.panelKicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+.panelTitle {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--paper-100);
+}
+
+.intro {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted-on-ink);
+  max-width: 68ch;
+  margin: 16px 0 28px;
+}
+
+.conceptGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.conceptCard {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted-on-ink);
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conceptTerm {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--paper-100);
+}
+
+.conceptBody {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted-on-ink);
+}
+
+.conceptLink {
+  color: var(--teal-400);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.conceptLink:hover {
+  color: var(--paper-100);
+}
+
+.interactiveLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal-400);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+}
+
+@media (max-width: 640px) {
+  .pillRow .pill span:last-child {
+    display: none;
+  }
+}
