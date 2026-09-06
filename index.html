@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="De-Trap Initiative: a student-led project teaching young people to read the fine print on BNPL, instant loan apps and 'pay in 3 easy parts' before it reads them." />
+<meta name="theme-color" content="#0a0713" />
+<title>De-Trap Initiative — Free money isn't free</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Manrope', 'Noto Sans Devanagari', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Hindi: give the serif display faces a Devanagari fallback */
+body.lang-hi .slide-title,
+body.lang-hi .section h2,
+body.lang-hi .guide-card h3,
+body.lang-hi .module-titles h3,
+body.lang-hi .report-card h3,
+body.lang-hi .pdc-card h3,
+body.lang-hi .meter-zone,
+body.lang-hi .meter-wrap h3,
+body.lang-hi .workshop-form h3,
+body.lang-hi .calc-line,
+body.lang-hi .mission-block p,
+body.lang-hi .footer-tagline {
+    font-family: 'Noto Serif Devanagari', 'Fraunces', serif;
+}
+
+/* Language toggle button */
+.lang-toggle {
+    pointer-events: auto; cursor: none;
+    background: transparent; border: 1px solid rgba(255,255,255,0.35);
+    color: #ffffff; border-radius: 20px; padding: 8px 14px;
+    font-family: 'Manrope', 'Noto Sans Devanagari', sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.lang-toggle:hover { background: #ffffff; color: #000000; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.content-nav .lang-toggle { border-color: rgba(255,255,255,0.25); color: #b9b4d4; }
+.content-nav .lang-toggle:hover { background: #e8b06a; border-color: #e8b06a; color: #1a1206; }
+
+* { cursor: none !important; }
+
+::-webkit-scrollbar { display: none; width: 0; }
+
+#webgl {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    outline: none;
+}
+
+/* ---------- Custom cursor ---------- */
+.cursor-inner {
+    position: fixed; top: 0; left: 0;
+    width: 6px; height: 6px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+}
+.cursor-outer {
+    position: fixed; top: 0; left: 0;
+    width: 40px; height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+/* ---------- Overlay layer ---------- */
+.cinematic-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 60px 40px 60px;
+    box-sizing: border-box;
+}
+
+/* ---------- Header ---------- */
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; z-index: 20;
+    pointer-events: auto;
+    padding: 20px 0;
+}
+.brand { font-size: 14px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; }
+.header-nav { display: flex; align-items: center; gap: 24px; }
+.nav-link {
+    color: #ffffff; text-decoration: none;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 500; transition: color 0.3s;
+}
+.nav-link:hover { color: #ffffff; }
+.nav-dot { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; }
+.contact-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 24px;
+    background: #ffffff; color: #000000;
+    text-decoration: none;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+    border-radius: 20px;
+    transition: transform 0.3s, background 0.3s;
+}
+.btn-circle {
+    display: inline-block; width: 6px; height: 6px;
+    border: 1px solid #000000; border-radius: 50%; background: transparent;
+}
+.contact-btn:hover { transform: scale(1.05); background: #f0f0f0; }
+
+/* ---------- Slides ---------- */
+.slide { position: absolute; bottom: 12%; pointer-events: none; }
+
+#slide-1 { left: 0; width: 100%; }
+#slide-1 .slide-title { margin-left: 60px; }
+#slide-1 .desc-row { position: relative; display: flex; width: 100%; }
+#slide-1 .col-1 {
+    margin-left: 60px;
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+#slide-1 .col-2 {
+    position: absolute;
+    left: calc(25vw + 40px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+
+#slide-2 { left: 0; width: 100%; }
+#slide-2-img {
+    position: fixed;
+    top: 90px;
+    left: 60px;
+    width: calc(25vw - 60px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 14px;
+    z-index: 2;
+    pointer-events: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    opacity: 0;
+}
+#slide-2-img img, #slide-2-img svg {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: scale(1.15);
+    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#slide-2-img.active { clip-path: inset(0 0 0 0); opacity: 1; }
+#slide-2-img.active img, #slide-2-img.active svg { transform: scale(1); }
+
+#slide-2 .slide-title { margin-left: calc(25vw + 40px); }
+#slide-2 .slide-desc {
+    margin-left: calc(50vw + 20px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+
+#slide-3 {
+    left: calc(50vw + 20px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+#slide-3 .slide-title { white-space: nowrap; }
+
+#slide-4 { left: calc(25% + 40px); max-width: 600px; }
+
+.slide-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 116px;
+    line-height: 1.0;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #fff6ed;
+}
+.slide-desc {
+    font-size: 16px; line-height: 1.7; font-weight: 300;
+    color: #d1d5db; letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0.4s;
+}
+.slide.active .slide-desc { opacity: 1; transform: translateY(0); }
+
+.slide-title .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(12px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.slide.active .slide-title .char { opacity: 1; transform: translateY(0); filter: blur(0); }
+.slide.active { pointer-events: auto; }
+
+/* ---------- Grid overlay ---------- */
+.story-dashes {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 12px;
+}
+.story-dash { width: 2px; height: 40px; background: rgba(255, 255, 255, 0.15); border-radius: 2px; }
+.story-dash-fill { width: 100%; height: 0%; background: #ffffff; border-radius: 2px; }
+
+.grid-horizontal-line {
+    position: fixed; top: 70px; left: 0; right: 0;
+    width: 100%; height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    z-index: 5; pointer-events: none;
+}
+.grid-lines {
+    position: fixed; top: 0; left: 40px; right: 40px;
+    width: calc(100% - 80px); height: 100vh;
+    display: flex; justify-content: space-between;
+    z-index: 5; pointer-events: none;
+}
+.grid-line {
+    position: relative; width: 1px; height: 100%;
+    background: rgba(255, 255, 255, 0.12);
+}
+.grid-line:nth-child(3) { margin-top: 70px; height: calc(100vh - 70px); }
+.grid-dot {
+    position: absolute; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================================
+   Real content: scroll runway (cinematic space) + editorial page
+   ============================================================ */
+.scroll-runway {
+    position: relative;
+    width: 100%;
+    height: 900vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#site-content {
+    position: relative;
+    z-index: 30;
+    background: #0a0713;
+    color: #ece9f5;
+    box-shadow: 0 -60px 120px 50px #0a0713;
+}
+#site-content, #site-content * { user-select: text; }
+
+/* soft top lip that blends the black stage into the ink page */
+.content-top {
+    height: 160px;
+    background: linear-gradient(to bottom, rgba(10,7,19,0) 0%, #0a0713 92%);
+    margin-top: -160px;
+    position: relative;
+    z-index: 31;
+    pointer-events: none;
+}
+
+/* --- Sticky content nav --- */
+.content-nav {
+    position: sticky; top: 0; z-index: 40;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 60px;
+    background: rgba(10,7,19,0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.content-nav .brand { color: #fff6ed; }
+.cnav-links { display: flex; align-items: center; gap: 26px; }
+.cnav-link {
+    color: #b9b4d4; text-decoration: none;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 600; transition: color 0.25s;
+}
+.cnav-link:hover { color: #e8b06a; }
+.cnav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; border-radius: 24px;
+    background: #e8b06a; color: #1a1206;
+    text-decoration: none; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: transform 0.25s, background 0.25s;
+}
+.cnav-cta:hover { transform: scale(1.05); background: #f2c27f; }
+
+/* --- Section scaffolding --- */
+.section { max-width: 1180px; margin: 0 auto; padding: 104px 60px; }
+.section + .section { border-top: 1px solid rgba(255,255,255,0.06); }
+.eyebrow-c {
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: #e8b06a; font-weight: 600;
+}
+.section h2 {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+    font-size: 52px; line-height: 1.05; margin: 14px 0 20px; color: #fff6ed;
+    letter-spacing: 0.5px;
+}
+.section .lead {
+    font-size: 18px; line-height: 1.75; color: #b9b4d4;
+    max-width: 760px; font-weight: 300;
+}
+
+/* --- Guide library --- */
+.guide-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 50px;
+}
+.guide-card {
+    background: #14102a; border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px; padding: 30px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.guide-card:hover { transform: translateY(-6px); border-color: rgba(232,176,106,0.45); }
+.guide-tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+.guide-card h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: #fff6ed; line-height: 1.2; }
+.guide-card p { font-size: 15px; line-height: 1.65; color: #a49fc2; flex: 1; }
+.guide-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+.pages { font-size: 13px; color: #7c7799; letter-spacing: 0.5px; }
+.dl-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: 30px;
+    color: #1a1206; text-decoration: none;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    transition: transform 0.25s, filter 0.25s;
+}
+.dl-btn:hover { transform: scale(1.05); filter: brightness(1.08); }
+.accent-gold .guide-tag { color: #e8b06a; }
+.accent-gold .dl-btn { background: #e8b06a; }
+.accent-teal .guide-tag { color: #6ad0c0; }
+.accent-teal .dl-btn { background: #6ad0c0; }
+.accent-coral .guide-tag { color: #ff8f8f; }
+.accent-coral .dl-btn { background: #ff8f8f; }
+
+/* --- Course modules --- */
+.modules { margin-top: 54px; display: flex; flex-direction: column; gap: 22px; }
+.module { background: #120e26; border: 1px solid rgba(255,255,255,0.06); border-radius: 22px; overflow: hidden; }
+.module-head { display: flex; gap: 22px; align-items: flex-start; padding: 30px 34px 0; }
+.module-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 44px; color: #e8b06a; opacity: 0.55; line-height: 0.9; }
+.module-titles h3 { font-family: 'Fraunces', serif; font-size: 27px; font-weight: 500; color: #fff6ed; line-height: 1.15; }
+.module-short { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; margin-top: 7px; }
+.module-intro { padding: 16px 34px 4px; font-size: 16px; line-height: 1.75; color: #b3aed0; max-width: 940px; font-weight: 300; }
+.concepts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 20px 34px 34px; }
+.concept { background: #1a1533; border-radius: 14px; padding: 22px; }
+.concept .term { font-weight: 700; color: #e8b06a; font-size: 15px; margin-bottom: 9px; }
+.concept .cbody { font-size: 14px; line-height: 1.65; color: #a49fc2; }
+.concept a { color: #6ad0c0; text-decoration: none; border-bottom: 1px solid rgba(106,208,192,0.4); }
+
+/* --- Reports --- */
+.reports-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
+.report-card { background: #14102a; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 30px; }
+.report-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.report-card h3 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; color: #fff6ed; }
+.report-cat { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; }
+.pill { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 20px; display: inline-block; }
+.pill.active { background: rgba(106,208,192,0.15); color: #6ad0c0; }
+.pill.shutdown { background: rgba(255,143,143,0.15); color: #ff8f8f; }
+.pill.watch { background: rgba(232,176,106,0.15); color: #e8b06a; }
+.pill.transformed { background: rgba(170,150,255,0.16); color: #b9aaff; }
+.report-status { font-size: 13px; color: #9a95b8; margin: 10px 0 14px; }
+.report-summary { font-size: 15px; line-height: 1.7; color: #b3aed0; }
+.report-card details { margin-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 14px; }
+.report-card summary { cursor: none; color: #e8b06a; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; list-style: none; }
+.report-card summary::-webkit-details-marker { display: none; }
+.detail-block { margin-top: 16px; }
+.detail-block h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; margin-bottom: 6px; }
+.detail-block p, .detail-block li { font-size: 14px; line-height: 1.6; color: #a49fc2; }
+.detail-block ul { padding-left: 18px; }
+.detail-block li { margin-bottom: 4px; }
+.report-source { font-size: 12px; color: #67637f; margin-top: 16px; font-style: italic; }
+.next-up { margin-top: 40px; }
+.next-up-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; margin-bottom: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 12px; }
+.chip { background: #171232; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 10px 18px; font-size: 13px; color: #b9b4d4; }
+.chip b { color: #fff6ed; font-weight: 600; }
+.chip span { color: #7c7799; }
+
+/* --- PDC --- */
+.pdc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+.pdc-card { background: #14102a; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 30px; }
+.pdc-card .num { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: #e8b06a; }
+.pdc-card h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: #fff6ed; margin: 8px 0 12px; }
+.pdc-card p { font-size: 15px; line-height: 1.65; color: #a49fc2; }
+.zones { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.zone { flex: 1; min-width: 160px; border-radius: 16px; padding: 20px 22px; }
+.zone .zname { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.zone .zdesc { font-size: 13px; color: #cfc9e6; }
+.zone.green { background: rgba(106,208,192,0.12); border: 1px solid rgba(106,208,192,0.3); }
+.zone.green .zname { color: #6ad0c0; }
+.zone.yellow { background: rgba(232,176,106,0.12); border: 1px solid rgba(232,176,106,0.3); }
+.zone.yellow .zname { color: #e8b06a; }
+.zone.red { background: rgba(255,143,143,0.12); border: 1px solid rgba(255,143,143,0.3); }
+.zone.red .zname { color: #ff8f8f; }
+.disclaimer {
+    margin-top: 30px; padding: 20px 24px; border-radius: 14px;
+    background: rgba(255,255,255,0.03); border-left: 3px solid #e8b06a;
+    font-size: 14px; line-height: 1.65; color: #9a95b8;
+}
+
+/* --- Schools --- */
+.schools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; margin-top: 50px; }
+.workshop-col { display: flex; flex-direction: column; gap: 26px; }
+.day-block h4, .provide-block h4 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #e8b06a; margin-bottom: 8px; }
+.day-block p, .provide-block p { font-size: 15px; line-height: 1.7; color: #b3aed0; font-weight: 300; }
+.provide-block ul { list-style: none; margin-top: 8px; }
+.provide-block li { font-size: 15px; line-height: 1.9; color: #b3aed0; padding-left: 20px; position: relative; }
+.provide-block li::before { content: "→"; position: absolute; left: 0; color: #6ad0c0; }
+.workshop-form { background: #14102a; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 32px; }
+.workshop-form h3 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: #fff6ed; margin-bottom: 6px; }
+.workshop-form .fhint { font-size: 14px; color: #9a95b8; margin-bottom: 22px; line-height: 1.6; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #7c7799; margin-bottom: 7px; }
+.field input, .field textarea {
+    width: 100%; background: #0e0b20; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 12px 14px; color: #ece9f5;
+    font-family: 'Manrope', sans-serif; font-size: 15px; outline: none;
+    transition: border-color 0.25s;
+}
+.field input:focus, .field textarea:focus { border-color: #e8b06a; }
+.field textarea { resize: vertical; min-height: 90px; }
+.submit-btn {
+    width: 100%; background: #e8b06a; color: #1a1206; border: none;
+    padding: 14px; border-radius: 30px; font-family: 'Manrope', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    transition: transform 0.25s, background 0.25s; margin-top: 6px;
+}
+.submit-btn:hover { transform: scale(1.02); background: #f2c27f; }
+.form-done { color: #6ad0c0; font-size: 15px; line-height: 1.6; padding: 20px 0; text-align: center; }
+
+/* --- About --- */
+.mission-block {
+    margin-top: 44px; padding: 40px; border-radius: 20px;
+    background: linear-gradient(135deg, rgba(232,176,106,0.08), rgba(106,208,192,0.05));
+    border: 1px solid rgba(255,255,255,0.07);
+}
+.mission-block .mlabel { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #e8b06a; }
+.mission-block p { font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; line-height: 1.4; color: #fff6ed; margin-top: 14px; font-weight: 400; }
+.board-label { display: block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; margin: 54px 0 22px; }
+.board-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.board-member { text-align: center; }
+.avatar { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 14px; background: linear-gradient(135deg, #2a2148, #171232); border: 1px solid rgba(232,176,106,0.3); }
+.board-role { font-size: 13px; line-height: 1.5; color: #b3aed0; }
+.board-name { font-size: 12px; color: #67637f; margin-top: 4px; }
+
+/* --- Footer --- */
+.site-footer { background: #08050f; border-top: 1px solid rgba(255,255,255,0.07); padding: 70px 60px 50px; }
+.footer-inner { max-width: 1180px; margin: 0 auto; }
+.footer-tagline { font-family: 'Fraunces', serif; font-style: italic; font-size: 34px; line-height: 1.3; color: #fff6ed; max-width: 640px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-top: 48px; }
+.footer-col h5 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7c7799; margin-bottom: 16px; }
+.footer-col a { display: block; color: #b9b4d4; text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.25s; }
+.footer-col a:hover { color: #e8b06a; }
+.footer-note { font-size: 13px; line-height: 1.7; color: #67637f; max-width: 560px; }
+.footer-bottom { margin-top: 46px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-bottom span { font-size: 12px; color: #67637f; letter-spacing: 0.5px; }
+.to-top { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #e8b06a; text-decoration: none; font-weight: 600; }
+
+/* ============================================================
+   Motion + polish for the content page
+   ============================================================ */
+/* soft radial glow behind each section heading */
+.section { position: relative; }
+.section > .eyebrow-c { position: relative; }
+.section h2::after {
+    content: ""; position: absolute; left: -8%; top: -40%;
+    width: 340px; height: 340px; z-index: -1;
+    background: radial-gradient(circle, rgba(232,176,106,0.10), rgba(232,176,106,0) 70%);
+    pointer-events: none;
+}
+
+/* scroll reveal — only active once JS adds .reveal-on, so content is always
+   visible if scripting is off or the observer never fires */
+#site-content.reveal-on .section > * { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.25,1,0.5,1), transform 0.75s cubic-bezier(0.25,1,0.5,1); }
+#site-content.reveal-on .section.in > * { opacity: 1; transform: none; }
+#site-content.reveal-on .section.in > *:nth-child(2) { transition-delay: 0.05s; }
+#site-content.reveal-on .section.in > *:nth-child(3) { transition-delay: 0.10s; }
+#site-content.reveal-on .section.in > *:nth-child(4) { transition-delay: 0.16s; }
+#site-content.reveal-on .section.in > *:nth-child(5) { transition-delay: 0.22s; }
+
+/* staggered children inside grids */
+#site-content.reveal-on .stagger > * { opacity: 0; transform: translateY(26px) scale(0.985); transition: opacity 0.65s cubic-bezier(0.25,1,0.5,1), transform 0.65s cubic-bezier(0.25,1,0.5,1); }
+#site-content.reveal-on .section.in .stagger > * { opacity: 1; transform: none; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(1) { transition-delay: 0.05s; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(2) { transition-delay: 0.12s; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(3) { transition-delay: 0.19s; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(4) { transition-delay: 0.26s; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(5) { transition-delay: 0.33s; }
+#site-content.reveal-on .section.in .stagger > *:nth-child(6) { transition-delay: 0.40s; }
+
+/* ---- True-cost calculator band ---- */
+#truecost { max-width: 1180px; margin: 0 auto; padding: 120px 60px 104px; position: relative; }
+.calc-shell {
+    position: relative; margin-top: 46px;
+    display: grid; grid-template-columns: 1fr 380px; gap: 50px; align-items: center;
+    background: linear-gradient(150deg, rgba(232,176,106,0.07), rgba(106,208,192,0.04) 60%, rgba(255,143,143,0.05));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px; padding: 48px;
+    overflow: hidden;
+}
+.calc-shell::before {
+    content: ""; position: absolute; width: 460px; height: 460px; right: -140px; top: -160px;
+    background: radial-gradient(circle, rgba(232,176,106,0.18), rgba(232,176,106,0) 70%);
+    pointer-events: none;
+}
+.calc-controls { position: relative; z-index: 1; }
+.calc-line { font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; line-height: 1.5; color: #e6dff5; margin-bottom: 30px; }
+.calc-line b { color: #e8b06a; font-style: normal; font-weight: 600; }
+.slider-row { margin-bottom: 24px; }
+.slider-row .slabel { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #9a95b8; margin-bottom: 10px; }
+.slider-row .sval { color: #fff6ed; font-weight: 700; letter-spacing: 0; }
+input[type="range"].crange {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 4px;
+    background: rgba(255,255,255,0.14); outline: none;
+}
+input[type="range"].crange::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: #e8b06a; cursor: none; box-shadow: 0 0 0 5px rgba(232,176,106,0.18), 0 4px 12px rgba(0,0,0,0.5);
+}
+input[type="range"].crange::-moz-range-thumb {
+    width: 20px; height: 20px; border: none; border-radius: 50%; background: #e8b06a;
+    box-shadow: 0 0 0 5px rgba(232,176,106,0.18);
+}
+.calc-gauge { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.calc-gauge svg { width: 300px; height: 300px; }
+.gauge-caption { font-size: 14px; color: #b3aed0; text-align: center; line-height: 1.6; }
+.gauge-caption b { color: #ff9a9a; font-weight: 700; }
+
+/* ---- Debt risk meter ---- */
+.meter-wrap { margin-top: 44px; background: #120e26; border: 1px solid rgba(255,255,255,0.07); border-radius: 22px; padding: 36px; }
+.meter-wrap h3 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; color: #fff6ed; margin-bottom: 6px; }
+.meter-wrap .mhint { font-size: 14px; color: #9a95b8; margin-bottom: 24px; }
+.meter-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 30px; }
+.mcheck { display: flex; gap: 12px; align-items: flex-start; cursor: none; font-size: 14px; line-height: 1.5; color: #b3aed0; padding: 6px 0; }
+.mcheck input { appearance: none; -webkit-appearance: none; min-width: 20px; height: 20px; margin-top: 1px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 6px; background: transparent; position: relative; transition: background 0.2s, border-color 0.2s; }
+.mcheck input:checked { background: #e8b06a; border-color: #e8b06a; }
+.mcheck input:checked::after { content: "✓"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #1a1206; font-size: 13px; font-weight: 700; }
+.meter-bar-wrap { margin-top: 30px; }
+.meter-track { height: 14px; border-radius: 10px; background: rgba(255,255,255,0.08); overflow: hidden; position: relative; }
+.meter-fill { height: 100%; width: 0%; border-radius: 10px; background: linear-gradient(90deg, #6ad0c0, #e8b06a 55%, #ff8f8f); transition: width 0.5s cubic-bezier(0.25,1,0.5,1); }
+.meter-readout { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; }
+.meter-zone { font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; font-weight: 500; }
+.meter-zone.green { color: #6ad0c0; }
+.meter-zone.yellow { color: #e8b06a; }
+.meter-zone.red { color: #ff8f8f; }
+.meter-score { font-size: 13px; color: #7c7799; letter-spacing: 1px; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+    #truecost { padding: 72px 24px; }
+    .calc-shell { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+    .calc-gauge svg { width: 240px; height: 240px; }
+    .meter-checks { grid-template-columns: 1fr; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .content-nav { padding: 14px 24px; }
+    .cnav-links { display: none; }
+    .section { padding: 72px 24px; }
+    .section h2 { font-size: 38px; }
+    .guide-grid, .concepts, .reports-grid, .pdc-grid { grid-template-columns: 1fr; }
+    .schools-grid { grid-template-columns: 1fr; gap: 32px; }
+    .board-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .site-footer { padding: 54px 24px 40px; }
+    .footer-tagline { font-size: 26px; }
+    .module-head { flex-direction: column; gap: 8px; }
+}
+
+/* ============================================================
+   Cinematic overlay — responsive so slide text never overlaps
+   ============================================================ */
+@media (max-width: 1024px) {
+    .cinematic-container { padding: 0 34px 30px 34px; }
+    .slide { bottom: 9%; }
+    .slide-title { font-size: 60px; }
+    .slide-desc { font-size: 15px; }
+
+    #slide-1 .slide-title { margin-left: 0; }
+    #slide-1 .desc-row { flex-direction: column; gap: 16px; }
+    #slide-1 .col-1 { margin-left: 0; width: min(72vw, 440px); max-width: min(72vw, 440px); }
+    #slide-1 .col-2 { position: static; left: auto; margin-left: 0; width: min(72vw, 440px); max-width: min(72vw, 440px); }
+
+    #slide-2 .slide-title { margin-left: 0; }
+    #slide-2 .slide-desc { margin-left: 0; width: min(72vw, 440px); max-width: min(72vw, 440px); }
+
+    #slide-3 { left: 34px; width: min(72vw, 440px); max-width: min(72vw, 440px); }
+    #slide-3 .slide-title { white-space: normal; }
+
+    #slide-4 { left: 34px; max-width: min(80vw, 520px); }
+
+    #slide-2-img { top: 80px; left: 34px; width: min(46vw, 260px); }
+}
+
+@media (max-width: 640px) {
+    .cinematic-container { padding: 0 20px 22px 20px; }
+    .main-header { padding: 14px 0; }
+    .header-nav { display: none; }
+    .brand { font-size: 12px; letter-spacing: 3px; }
+    .contact-btn { padding: 8px 16px; font-size: 9px; }
+    .slide { bottom: 8%; }
+    .slide-title { font-size: 40px; margin-bottom: 14px; }
+    .slide-desc { font-size: 14px; line-height: 1.55; }
+    #slide-1 .col-2 { display: none; }
+    #slide-1 .col-1, #slide-2 .slide-desc,
+    #slide-3, #slide-4 {
+        width: min(86vw, 440px); max-width: min(86vw, 440px);
+    }
+    #slide-2-img { display: none; }
+}
+</style>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="cursor-inner"></div>
+<div class="cursor-outer"></div>
+
+<div class="cinematic-container">
+    <div class="main-header">
+        <div class="brand">De-Trap</div>
+        <nav class="header-nav">
+            <a href="#slide-1" class="nav-link">Bait</a>
+            <span class="nav-dot"></span>
+            <a href="#slide-2" class="nav-link">Cost</a>
+            <span class="nav-dot"></span>
+            <a href="#slide-3" class="nav-link">Flags</a>
+            <span class="nav-dot"></span>
+            <a href="#slide-4" class="nav-link">Escape</a>
+        </nav>
+        <div class="header-actions">
+            <button class="lang-toggle" type="button" aria-label="Switch language">हिं</button>
+            <a href="#guide" class="contact-btn">Workbook <span class="btn-circle"></span></a>
+        </div>
+    </div>
+
+    <div class="slide" id="slide-1">
+        <h2 class="slide-title">Free Money <br>Isn't Free</h2>
+        <div class="desc-row">
+            <p class="slide-desc col-1">A student-led initiative teaching grades 9&ndash;12 to read the fine print on BNPL, instant loan apps and &ldquo;pay in 3 easy parts&rdquo; &mdash; before it reads them.</p>
+            <p class="slide-desc col-2">We turn confusing credit products into sixty-second maths anyone can do. No login, no email wall. Just the numbers they hoped you would never run.</p>
+        </div>
+    </div>
+
+    <div class="slide-image-mask" id="slide-2-img">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A cost gauge: borrow ₹100, repay ₹122 in 30 days — a real cost of 122% a year">
+            <defs>
+                <radialGradient id="s2bg" cx="50%" cy="44%" r="78%">
+                    <stop offset="0%" stop-color="#2a1707"/>
+                    <stop offset="46%" stop-color="#150b04"/>
+                    <stop offset="100%" stop-color="#050308"/>
+                </radialGradient>
+                <radialGradient id="s2glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(232,176,106,0.42)"/>
+                    <stop offset="100%" stop-color="rgba(232,176,106,0)"/>
+                </radialGradient>
+                <linearGradient id="s2arc" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffe1ad"/>
+                    <stop offset="55%" stop-color="#e8b06a"/>
+                    <stop offset="100%" stop-color="#b5702f"/>
+                </linearGradient>
+                <filter id="s2blur" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="9"/>
+                </filter>
+            </defs>
+
+            <rect width="600" height="600" fill="url(#s2bg)"/>
+            <circle cx="300" cy="304" r="210" fill="url(#s2glow)"/>
+
+            <!-- tick ring (echoes the coin's knurled edge) -->
+            <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(232,176,106,0.5)" stroke-width="12" stroke-dasharray="2 24"/>
+
+            <!-- gauge: faint track + glowing gold arc filled to ~85% -->
+            <circle cx="300" cy="300" r="205" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="16"/>
+            <circle cx="300" cy="300" r="205" fill="none" stroke="url(#s2arc)" stroke-width="16" stroke-linecap="round"
+                    stroke-dasharray="1092 1288" transform="rotate(-90 300 300)" filter="url(#s2blur)" opacity="0.75"/>
+            <circle cx="300" cy="300" r="205" fill="none" stroke="url(#s2arc)" stroke-width="16" stroke-linecap="round"
+                    stroke-dasharray="1092 1288" transform="rotate(-90 300 300)"/>
+
+            <text x="300" y="126" text-anchor="middle" font-family="Manrope, sans-serif" font-size="19" letter-spacing="5" fill="#c9a06a" font-weight="600">BORROW &#8377;100</text>
+            <text x="300" y="292" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="128" fill="#fff6ed" font-weight="600">122%</text>
+            <text x="300" y="338" text-anchor="middle" font-family="Manrope, sans-serif" font-size="17" letter-spacing="4" fill="#a58a63" font-weight="600">REAL COST · A YEAR</text>
+            <text x="300" y="492" text-anchor="middle" font-family="Manrope, sans-serif" font-size="19" letter-spacing="4" fill="#ff9a9a" font-weight="600">REPAY &#8377;122 IN 30 DAYS</text>
+        </svg>
+    </div>
+
+    <div class="slide" id="slide-2">
+        <h2 class="slide-title">Read the <br>Fine Print</h2>
+        <p class="slide-desc">&ldquo;Just &#8377;100&rdquo; hides a real yearly cost of 122%. We show who is actually lending the money, what the fees truly are, and what happens the moment you miss a single payment.</p>
+    </div>
+
+    <div class="slide" id="slide-3">
+        <h2 class="slide-title">Red Flags</h2>
+        <p class="slide-desc">Predict, detect, correct &mdash; De-Trap&rsquo;s own framework for talking about risk. Learn the manipulation tactics behind the offers, and the green&ndash;yellow&ndash;red signals that quietly move someone toward the edge.</p>
+    </div>
+
+    <div class="slide" id="slide-4">
+        <h2 class="slide-title">You're Not <br>Trapped</h2>
+        <p class="slide-desc">Already in trouble? There is a way out, safely. The trap was never the money &mdash; it was the silence. Six modules, one workbook, run by students, for students.</p>
+    </div>
+</div>
+
+<div class="grid-horizontal-line"></div>
+<div class="grid-lines">
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+    <div class="grid-line story-progress-container">
+        <div class="grid-dot top"></div>
+        <div class="grid-dot bottom"></div>
+        <div class="story-dashes">
+            <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+            <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+            <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+            <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+        </div>
+    </div>
+</div>
+
+<canvas id="webgl"></canvas>
+
+<!-- Scroll runway: the 900vh of space the cinematic intro plays across -->
+<div class="scroll-runway"></div>
+
+<!-- ============ The real De-Trap site ============ -->
+<main id="site-content">
+    <div class="content-top"></div>
+
+    <div class="content-nav">
+        <div class="brand">De-Trap</div>
+        <nav class="cnav-links">
+            <a href="#guide" class="cnav-link">Library</a>
+            <a href="#course" class="cnav-link">Course</a>
+            <a href="#reports" class="cnav-link">Reports</a>
+            <a href="#pdc" class="cnav-link">PDC</a>
+            <a href="#schools" class="cnav-link">Schools</a>
+            <a href="#about" class="cnav-link">About</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:14px;">
+            <button class="lang-toggle" type="button" aria-label="Switch language">हिं</button>
+            <a href="public/pdfs/the-debt-trap-workbook.pdf" class="cnav-cta" download>Get the workbook</a>
+        </div>
+    </div>
+
+    <!-- 00 · The reveal: interactive true-cost calculator -->
+    <section class="section" id="truecost" style="max-width:none;padding-left:0;padding-right:0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 60px;">
+        <span class="eyebrow-c">The sixty-second maths</span>
+        <h2>Turn any &ldquo;small fee&rdquo; into its real yearly cost</h2>
+        <p class="lead">This is the one calculation that catches almost everything. Drag the numbers from any offer you have seen and watch the honest rate appear.</p>
+      </div>
+
+      <div style="max-width:1180px;margin:0 auto;padding:0 60px;">
+        <div class="calc-shell">
+            <div class="calc-controls">
+                <div class="calc-line">Borrow <b id="cl-amount">₹2,000</b>, pay a <b id="cl-fee">₹100</b> fee to hold it for <b id="cl-days">15 days</b>.</div>
+
+                <div class="slider-row">
+                    <div class="slabel"><span>Amount borrowed</span><span class="sval" id="sv-amount">₹2,000</span></div>
+                    <input type="range" class="crange" id="in-amount" min="500" max="20000" step="100" value="2000">
+                </div>
+                <div class="slider-row">
+                    <div class="slabel"><span>Fee charged</span><span class="sval" id="sv-fee">₹100</span></div>
+                    <input type="range" class="crange" id="in-fee" min="20" max="2000" step="10" value="100">
+                </div>
+                <div class="slider-row">
+                    <div class="slabel"><span>Days you hold it</span><span class="sval" id="sv-days">15 days</span></div>
+                    <input type="range" class="crange" id="in-days" min="5" max="90" step="1" value="15">
+                </div>
+            </div>
+
+            <div class="calc-gauge">
+                <svg viewBox="0 0 320 320" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ffe1ad"/>
+                            <stop offset="55%" stop-color="#e8b06a"/>
+                            <stop offset="100%" stop-color="#b5702f"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(232,176,106,0.35)" stroke-width="6" stroke-dasharray="2 16"/>
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16"/>
+                    <circle id="gauge-arc" cx="160" cy="160" r="120" fill="none" stroke="url(#cg)" stroke-width="16" stroke-linecap="round"
+                            transform="rotate(-90 160 160)" stroke-dasharray="0 754"/>
+                    <text id="gauge-num" x="160" y="168" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="66" fill="#fff6ed" font-weight="600">122%</text>
+                    <text x="160" y="200" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" letter-spacing="3" fill="#a58a63" font-weight="600">A YEAR</text>
+                </svg>
+                <div class="gauge-caption">That &ldquo;small&rdquo; fee is really <b id="gc-apr">122%</b> per year — often more than a credit card, sometimes many times over.</div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 · Guide library -->
+    <section class="section" id="guide">
+        <span class="eyebrow-c">01 · The library</span>
+        <h2>The debt trap guide library</h2>
+        <p class="lead">Everything De-Trap has published, in one place. No login, no email wall. Download it, print it, or hand it to a friend.</p>
+
+        <div class="guide-grid">
+            <div class="guide-card accent-gold">
+                <span class="guide-tag">Workbook · Grades 8–12</span>
+                <h3>The Debt Trap: a survival guide</h3>
+                <p>The full illustrated workbook. Twelve pages, one pen, the maths that keeps you out of a trap.</p>
+                <div class="guide-meta">
+                    <span class="pages">12 pages · PDF</span>
+                    <a class="dl-btn" href="public/pdfs/the-debt-trap-workbook.pdf" download>Download</a>
+                </div>
+            </div>
+            <div class="guide-card accent-teal">
+                <span class="guide-tag">Reference</span>
+                <h3>Government schemes &amp; legal reference</h3>
+                <p>RBI digital lending rules, your rights against recovery agents, and exactly where to complain.</p>
+                <div class="guide-meta">
+                    <span class="pages">9 pages · PDF</span>
+                    <a class="dl-btn" href="public/pdfs/government-schemes-legal-reference.pdf" download>Download</a>
+                </div>
+            </div>
+            <div class="guide-card accent-coral">
+                <span class="guide-tag">Research</span>
+                <h3>The Debt Trap: complete research guide</h3>
+                <p>The full research behind the workbook, with sourcing, for teachers and reviewers.</p>
+                <div class="guide-meta">
+                    <span class="pages">27 pages · PDF</span>
+                    <a class="dl-btn" href="public/pdfs/the-debt-trap-complete-guide.pdf" download>Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 · Course -->
+    <section class="section" id="course">
+        <span class="eyebrow-c">02 · Flagship course</span>
+        <h2>Financial literacy, in six stops</h2>
+        <p class="lead">A short course you can finish in one sitting or one class period. Move through it module by module — every trap on this site is built out of these ideas.</p>
+
+        <div class="modules">
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">01</div>
+                    <div class="module-titles"><h3>What is credit</h3><div class="module-short">Credit, debt and interest</div></div>
+                </div>
+                <p class="module-intro">You have almost certainly borrowed money already — a “pay in 3 parts” checkout, ₹200 off a friend, food ordered now and settled later. This module gives you the three words that describe all of it. Everything else on this site is built on them.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">Credit</div><div class="cbody">Someone lets you use money now that you do not have yet. Not a gift, not income — a promise with a date attached.</div></div>
+                    <div class="concept"><div class="term">Debt</div><div class="cbody">The total you owe because you took that credit: what you borrowed, plus everything charged on top. Debt is not evil. Debt you never worked out is.</div></div>
+                    <div class="concept"><div class="term">Interest</div><div class="cbody">Rent on someone else's money. Charged as a percentage over time — which is why the same loan costs more the longer you hold it.</div></div>
+                </div>
+            </article>
+
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">02</div>
+                    <div class="module-titles"><h3>How interest actually works</h3><div class="module-short">Simple vs. compound</div></div>
+                </div>
+                <p class="module-intro">Two loans can advertise the identical rate and cost you thousands apart. The difference is how that rate is applied — to what you first borrowed, or to what you still owe. Every trap further down this site is built on that difference.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">Simple interest</div><div class="cbody">Charged only on what you first borrowed. ₹1,000 at 10% for two years costs ₹200. Predictable, straight-line, and increasingly rare.</div></div>
+                    <div class="concept"><div class="term">Compound interest</div><div class="cbody">Charged on everything you owe, including interest already added. Over ten years at 24%, ₹10,000 costs ₹34,000 simple — and ₹85,944 compound.</div></div>
+                    <div class="concept"><div class="term">Flat vs reducing balance</div><div class="cbody">“12% flat” charges you on the full amount for the whole term, even as you repay it. “12% reducing” charges only on what is left. Same headline. Different price.</div></div>
+                </div>
+            </article>
+
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">03</div>
+                    <div class="module-titles"><h3>The three-party lending structure</h3><div class="module-short">Who is really lending</div></div>
+                </div>
+                <p class="module-intro">The single most important fact about the app on your phone: it usually is not the lender. Indian regulation splits digital lending into three roles, and knowing which one you are talking to decides whether a complaint lands or gets bounced between two companies forever.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">The real lender</div><div class="cbody">A bank or NBFC licensed by the RBI — a Regulated Entity. It owns the loan, carries the risk, and is finally answerable for everything done in its name.</div></div>
+                    <div class="concept"><div class="term">The app's operator</div><div class="cbody">The company that builds the app, markets it, signs you up and often makes the recovery calls. A service provider, not your lender — and it cannot hide behind that.</div></div>
+                    <div class="concept"><div class="term">The app itself</div><div class="cbody">Just the interface. Every one must be reported to the RBI, so an app you cannot trace back to a licensed lender is a red flag, not a bargain.</div></div>
+                </div>
+            </article>
+
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">04</div>
+                    <div class="module-titles"><h3>Spotting manipulation tactics</h3><div class="module-short">The brain traps</div></div>
+                </div>
+                <p class="module-intro">Most of these products are legal and many are run by licensed lenders. The danger is not that they are criminal — it is that they are engineered, and you are the one who has not read the design. Three patterns do most of the work.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">No friction</div><div class="cbody">No forms, no wait, no one asking what it is for. Friction is what makes a person pause. Remove it and you remove the pause.</div></div>
+                    <div class="concept"><div class="term">Framing</div><div class="cbody">“₹299 a month” instead of “₹3,588 a year plus fees.” Both describe the same product. The first number you see becomes the one you judge everything else against.</div></div>
+                    <div class="concept"><div class="term">Present bias</div><div class="cbody">The reward is today; the cost is a rumour called “later.” People reliably choose the smaller thing now over the bigger thing later. Instant credit is built on that gap.</div></div>
+                </div>
+            </article>
+
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">05</div>
+                    <div class="module-titles"><h3>Red flags and the PDC model</h3><div class="module-short">Green, yellow, red</div></div>
+                </div>
+                <p class="module-intro">Two skills catch almost everything: turn any fee into a yearly percentage, and check any repayment against what you can actually afford. This module gives you both — and the checklist that tells you when to stop reading and walk away.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">The calculation that never fails</div><div class="cbody">Borrow ₹2,000 for 15 days, fee ₹100. That is 5% — for 15 days. There are about 24 such periods in a year. 5% × 24 ≈ 122% a year.</div></div>
+                    <div class="concept"><div class="term">Red flags</div><div class="cbody">No Key Fact Statement. No lender name anywhere. Money into a wallet instead of your bank. Requests for contacts or photos. Automatic limit increases. Three means walk.</div></div>
+                    <div class="concept"><div class="term">The Personal Debt Ceiling</div><div class="cbody">Stable monthly income × a conservative safety factor, minus what you already owe each month. Every new instalment gets checked against it before you agree, not after.</div></div>
+                </div>
+            </article>
+
+            <article class="module">
+                <div class="module-head">
+                    <div class="module-num">06</div>
+                    <div class="module-titles"><h3>If you're already in trouble</h3><div class="module-short">Getting out, safely</div></div>
+                </div>
+                <p class="module-intro">Borrowing to repay is the trap closing. If that has already happened, this is the module that matters: what to stop doing today, what your rights actually are, and exactly who to contact. None of it costs anything.</p>
+                <div class="concepts">
+                    <div class="concept"><div class="term">Stop the stacking</div><div class="cbody">App B to pay App A, then App C to pay App B — each one pricier, because each is lending to someone visibly in trouble. The moment you borrow to repay, stop.</div></div>
+                    <div class="concept"><div class="term">What they may never do</div><div class="cbody">Call before 8 a.m. or after 7 p.m. Contact your family, friends or classmates about your debt. Threaten, shame or send fake legal notices. All of it is already illegal.</div></div>
+                    <div class="concept"><div class="term">Where to go</div><div class="cbody">Screenshot everything. Tell one adult today. Complain to the lender's Grievance Officer. Escalate at <a href="https://cms.rbi.org.in" target="_blank" rel="noopener">cms.rbi.org.in</a>. For threats: <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>, or call <a href="tel:1930">1930</a>.</div></div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 03 · Reports -->
+    <section class="section" id="reports">
+        <span class="eyebrow-c">03 · Original research</span>
+        <h2>How these platforms actually work</h2>
+        <p class="lead">De-Trap's own analysis of BNPL and instant-loan products in India: who really lends the money, what the fees actually are, and what happens if you miss a payment. Open a card for the full breakdown.</p>
+
+        <div class="reports-grid">
+            <div class="report-card">
+                <div class="report-top">
+                    <h3>Amazon Pay Later</h3>
+                    <span class="pill active">Active</span>
+                </div>
+                <div class="report-cat">BNPL</div>
+                <div class="report-status">RBI-linked lending partners</div>
+                <p class="report-summary">Amazon acts only as a Loan Service Provider (LSP). The actual credit comes from two RBI-regulated lenders, and Amazon's 2025 acquisition of one of them narrows the gap between platform and lender.</p>
+                <details>
+                    <summary>Full breakdown</summary>
+                    <div class="detail-block"><h4>Real lender</h4><p>Axio (formerly CapFloat), co-lending with Karur Vysya Bank, and IDFC FIRST Bank. Users are assigned to one lender via Amazon's internal allocation after PAN + Aadhaar KYC. In 2025 Amazon acquired Axio, its first ownership stake in an NBFC.</p></div>
+                    <div class="detail-block"><h4>Fee structure</h4><ul><li>Credit limit up to ₹60,000 for shopping and bills</li><li>Zero interest if the monthly bill is paid in full and on time</li><li>Optional EMI conversion (3–12 months) carries nominal interest, set by the lending partner</li></ul></div>
+                    <div class="detail-block"><h4>Rollover / missed payment</h4><ul><li>Missed or late payment triggers a late fee plus interest, charged by Axio/KVB or IDFC FIRST, not Amazon</li><li>Missed payments are reported to credit bureaus (CIBIL/Experian)</li><li>Recovery and collections are handled by the lending partner, not Amazon support</li></ul></div>
+                    <div class="detail-block"><h4>Regulatory status</h4><p>Governed by RBI's Digital Lending Guidelines through its bank/NBFC partners, not Amazon directly. Amazon's acquisition of Axio in 2025 reduces the separation between the shopping platform and the entity legally responsible for the loan.</p></div>
+                    <p class="report-source">Source: De-Trap platform workflow analysis, 2026</p>
+                </details>
+            </div>
+
+            <div class="report-card">
+                <div class="report-top">
+                    <h3>Simpl</h3>
+                    <span class="pill shutdown">Halted</span>
+                </div>
+                <div class="report-cat">BNPL</div>
+                <div class="report-status">Core checkout halted by RBI order, 25 Sept 2025</div>
+                <p class="report-summary">One of India's earliest BNPL apps, built on a frictionless one-tap checkout and a running “khata” ledger. Unlike its peers, Simpl never operated through a licensed bank or NBFC — and that gap is exactly what shut it down.</p>
+                <details>
+                    <summary>Full breakdown</summary>
+                    <div class="detail-block"><h4>Real lender</h4><p>None. Simpl settled directly with merchants itself instead of routing credit through an RBI-regulated bank or NBFC — the structural feature that separated it from peers like Amazon Pay Later or LazyPay.</p></div>
+                    <div class="detail-block"><h4>Fee structure</h4><ul><li>Instant spending limit from Simpl's own in-house underwriting, no card, password or OTP at checkout</li><li>Purchases across 26,000+ merchants pooled into one running balance</li><li>15-day repayment window at zero interest if paid on time</li></ul></div>
+                    <div class="detail-block"><h4>Rollover / missed payment</h4><ul><li>Late fees of roughly ₹50 to ₹100 if the 15-day window is missed</li><li>Accounts suspended, and merchants notified, until the outstanding balance clears</li></ul></div>
+                    <div class="detail-block"><h4>Regulatory status</h4><p>RBI found Simpl was operating a payment system without the Certificate of Authorisation required under the Payment and Settlement Systems Act, 2007. On 25 September 2025, RBI ordered it to halt those operations immediately — the clearest evidence yet of RBI closing the “quasi-payment system” loophole that let BNPL apps lend without a licensed partner.</p></div>
+                    <p class="report-source">Source: RBI order via The Paypers and AngelOne (Sept 2025); GrabOn and Fintech Singapore India BNPL reviews (2026)</p>
+                </details>
+            </div>
+            <div class="report-card">
+                <div class="report-top">
+                    <h3>LazyPay</h3>
+                    <span class="pill active">Active</span>
+                </div>
+                <div class="report-cat">BNPL / pay-later credit line</div>
+                <div class="report-status">Runs on a licensed NBFC (PayU Finance)</div>
+                <p class="report-summary">The useful contrast to Simpl: LazyPay looks like a one-tap pay-later button, but the credit behind it is issued by a registered NBFC, not the app maker. That single fact is what kept it standing when the unlicensed models were shut down.</p>
+                <details>
+                    <summary>Full breakdown</summary>
+                    <div class="detail-block"><h4>Real lender</h4><p>PayU Finance India Pvt Ltd — PayU's RBI-registered NBFC arm. “LazyPay” is the consumer brand; the loan itself is underwritten and owned by the NBFC (with partner lenders in some flows). There is always a licensed entity on record.</p></div>
+                    <div class="detail-block"><h4>Fee structure</h4><ul><li>A pay-later limit with an interest-free window if the bill is cleared on time</li><li>EMI conversions and personal loans carry interest — commonly quoted from the high-teens up to ~30%+ a year, set by the lender on your profile</li><li>Processing / convenience fees on longer-tenure loans</li></ul></div>
+                    <div class="detail-block"><h4>Rollover / missed payment</h4><ul><li>Late fees plus penal charges once the window is missed</li><li>Missed payments reported to credit bureaus, denting your wider score</li><li>Collections handled by the NBFC and its partners, not the app's support desk</li></ul></div>
+                    <div class="detail-block"><h4>Regulatory status</h4><p>Governed by RBI's Digital Lending Directions through PayU Finance. RBI's June 2022 circular — which barred loading credit lines onto prepaid instruments — pushed pay-later players to route credit through NBFC lending rather than a wallet; LazyPay's licensed-NBFC structure is exactly that model.</p></div>
+                    <p class="report-source">Source: PayU / LazyPay public disclosures; RBI PPI circular (June 2022); RBI Digital Lending Directions, 2022. De-Trap analysis, 2026.</p>
+                </details>
+            </div>
+
+            <div class="report-card">
+                <div class="report-top">
+                    <h3>KreditBee</h3>
+                    <span class="pill watch">Watch</span>
+                </div>
+                <div class="report-cat">Instant personal loan app</div>
+                <div class="report-status">Pure instant-loan category · under scrutiny</div>
+                <p class="report-summary">Not BNPL at a checkout — a straight cash loan into your account in minutes. This is the category where loan-stacking and aggressive recovery cluster, which is exactly why the “turn any fee into a yearly rate” skill matters most here.</p>
+                <details>
+                    <summary>Full breakdown</summary>
+                    <div class="detail-block"><h4>Real lender</h4><p>Operated by KrazyBee Services Pvt Ltd, lending mainly through its group NBFC and co-lending partners. Small-ticket loans from about ₹1,000 up to a few lakh, with tenures from a couple of months to a few years.</p></div>
+                    <div class="detail-block"><h4>Fee structure</h4><ul><li>A processing fee deducted up front — so the amount that lands is less than the amount you owe</li><li>Interest commonly quoted up to ~29.95% a year, varying by product and profile</li><li>Short tenures turn even a “small” fee into a very high yearly rate</li></ul></div>
+                    <div class="detail-block"><h4>Rollover / missed payment</h4><ul><li>Late and penal charges; extensions raise the total fast</li><li>The classic stacking trap — a second app to clear the first — lives in this category</li><li>Repayments reported to credit bureaus</li></ul></div>
+                    <div class="detail-block"><h4>Data practice &amp; regulatory status</h4><p>Instant-loan apps historically asked for broad phone permissions; RBI's 2022 Digital Lending Directions now restrict data access to what a loan actually needs. In 2023 the Enforcement Directorate searched premises linked to several app lenders, KreditBee among them, in a wider FEMA probe; the company said it cooperated and had moved to Indian ownership. Governed by RBI's Digital Lending Directions through its NBFC.</p></div>
+                    <p class="report-source">Source: KreditBee product disclosures; Enforcement Directorate search reporting (2023); RBI Digital Lending Directions, 2022. De-Trap analysis, 2026.</p>
+                </details>
+            </div>
+
+            <div class="report-card">
+                <div class="report-top">
+                    <h3>Slice</h3>
+                    <span class="pill transformed">Transformed</span>
+                </div>
+                <div class="report-cat">Prepaid card + credit line → small finance bank</div>
+                <div class="report-status">Reshaped by RBI's June 2022 PPI circular</div>
+                <p class="report-summary">The clearest case of a regulator forcing a model to change rather than die. Slice built a hugely popular prepaid card with a credit line for young users — then a single RBI circular pulled the mechanism out from under it, and the company had to rebuild.</p>
+                <details>
+                    <summary>Full breakdown</summary>
+                    <div class="detail-block"><h4>Original model</h4><p>A prepaid payment instrument — a card and wallet — loaded from a credit line via an NBFC partner, marketed as a friendly “pay in 3” card aimed squarely at students and first-jobbers.</p></div>
+                    <div class="detail-block"><h4>What changed</h4><ul><li>In June 2022 RBI barred non-bank prepaid instruments from being loaded with credit lines</li><li>That instantly broke the core Slice mechanic, and the product was reworked toward EMIs and UPI</li><li>Slice then merged with North East Small Finance Bank (RBI-approved, effective 2023) — moving inside a regulated bank rather than shutting down</li></ul></div>
+                    <div class="detail-block"><h4>Why it's on this page</h4><p>It shows regulation working as a scalpel, not a hammer: the same June 2022 circular that reshaped Slice is why licensed players now route credit through NBFCs and banks. Read any “card + credit line” pitch with this history in mind.</p></div>
+                    <p class="report-source">Source: RBI PPI Master Directions and June 2022 clarification; RBI approval of the Slice–North East Small Finance Bank merger (2023). De-Trap analysis, 2026.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 · PDC model -->
+    <section class="section" id="pdc">
+        <span class="eyebrow-c">04 · De-Trap's internal tool</span>
+        <h2>The PDC model</h2>
+        <p class="lead">Predict, detect, correct. De-Trap's own guidebook framework for talking about risk — a conversation starter for workshops, not a validated academic instrument.</p>
+
+        <div class="pdc-grid">
+            <div class="pdc-card"><div class="num">Predict</div><h3>Before money moves</h3><p>Spot the conditions that make borrowing likely before any money changes hands: no savings buffer, pressure to keep up, unclear costs.</p></div>
+            <div class="pdc-card"><div class="num">Detect</div><h3>Once it has started</h3><p>Notice the signs once borrowing has begun: missed dates, hidden apps, borrowing to repay.</p></div>
+            <div class="pdc-card"><div class="num">Correct</div><h3>The next concrete step</h3><p>The specific next step for each zone, from a checklist to simply telling one adult.</p></div>
+        </div>
+
+        <div class="zones">
+            <div class="zone green"><div class="zname">Clear</div><div class="zdesc">No live debt, costs understood, a buffer in place.</div></div>
+            <div class="zone yellow"><div class="zname">Exposed</div><div class="zdesc">Borrowing without the maths, or a payment already late.</div></div>
+            <div class="zone red"><div class="zname">Trapped</div><div class="zdesc">Borrowing to repay, hiding it, being contacted about money owed.</div></div>
+        </div>
+
+        <div class="disclaimer">This is a De-Trap teaching tool built for workshops, not a clinical or academic diagnostic. Treat the zone as a conversation starter, not a verdict.</div>
+
+        <div class="meter-wrap">
+            <h3>Where would you land?</h3>
+            <p class="mhint">Tick anything that is true for you right now. Nothing is stored — this runs entirely in your browser.</p>
+            <div class="meter-checks" id="meter-checks">
+                <label class="mcheck"><input type="checkbox" data-pts="2">I owe money to someone right now — an app, a shop, a friend — that I have not fully repaid.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="2">I do not know the exact total I owe today, to the rupee.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="2">I have been late on a repayment at least once.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="2">I do not know the % per year cost of anything I have borrowed.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="2">If a ₹2,000 emergency hit tomorrow, I would have to borrow to cover it.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="3">I have hidden a debt or a purchase from my family.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="3">Someone has contacted me more than once about money I owe.</label>
+                <label class="mcheck"><input type="checkbox" data-pts="4">I have borrowed from one place to pay another.</label>
+            </div>
+            <div class="meter-bar-wrap">
+                <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+                <div class="meter-readout">
+                    <span class="meter-zone green" id="meter-zone">Clear</span>
+                    <span class="meter-score" id="meter-score">0 of 20 points</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 · Schools -->
+    <section class="section" id="schools">
+        <span class="eyebrow-c">05 · Partner with us</span>
+        <h2>Bring De-Trap to your school</h2>
+        <p class="lead">A two-day workshop that turns this workbook into a classroom experience — run by students, for students.</p>
+
+        <div class="schools-grid">
+            <div class="workshop-col">
+                <div class="day-block"><h4>Day one</h4><p>Students run the workbook live — the maths, the manipulation tactics, and the ₹100 that quietly costs 122% a year.</p></div>
+                <div class="day-block"><h4>Day two</h4><p>Small groups build their own Personal Debt Ceiling and a walk-away checklist they keep, then map real apps onto the green–yellow–red zones.</p></div>
+                <div class="provide-block"><h4>What your school provides</h4><ul><li>One class period on each of two days</li><li>A room with a projector</li><li>A teacher in the room (no prep required)</li></ul></div>
+            </div>
+
+            <form class="workshop-form" id="workshop-form">
+                <h3>Book a workshop</h3>
+                <p class="fhint">Tell us about your school and we'll get back within a few working days.</p>
+                <div class="field"><label>School name</label><input type="text" name="school" required></div>
+                <div class="field"><label>Contact person</label><input type="text" name="contact" required></div>
+                <div class="field"><label>Email</label><input type="email" name="email" required></div>
+                <div class="field"><label>Grade levels</label><input type="text" name="grade" placeholder="e.g. Grades 9–12"></div>
+                <div class="field"><label>Anything else we should know</label><textarea name="message"></textarea></div>
+                <button type="submit" class="submit-btn">Request a workshop</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 06 · About -->
+    <section class="section" id="about">
+        <span class="eyebrow-c">06 · Who we are</span>
+        <h2>About De-Trap</h2>
+        <p class="lead">De-Trap Initiative is a student-led research and outreach project. We read the terms and conditions so our peers don't have to learn the hard way.</p>
+
+        <div class="mission-block">
+            <span class="mlabel">Our mission</span>
+            <p>Nobody gets trapped by a loan they understood. We exist to close the gap between what these products advertise and what they actually cost.</p>
+        </div>
+
+        <span class="board-label">Founding board</span>
+        <div class="board-grid">
+            <div class="board-member"><div class="avatar"></div><div class="board-role">Founder &amp; research lead</div><div class="board-name">Name to be announced</div></div>
+            <div class="board-member"><div class="avatar"></div><div class="board-role">Curriculum &amp; workshops</div><div class="board-name">Name to be announced</div></div>
+            <div class="board-member"><div class="avatar"></div><div class="board-role">Design &amp; product</div><div class="board-name">Name to be announced</div></div>
+            <div class="board-member"><div class="avatar"></div><div class="board-role">Legal &amp; policy research</div><div class="board-name">Name to be announced</div></div>
+            <div class="board-member"><div class="avatar"></div><div class="board-role">School partnerships</div><div class="board-name">Name to be announced</div></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-tagline">The trap was never the money. It was the silence.</div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Downloads</h5>
+                    <a href="public/pdfs/the-debt-trap-workbook.pdf" download>The Debt Trap workbook</a>
+                    <a href="public/pdfs/government-schemes-legal-reference.pdf" download>Government schemes &amp; legal reference</a>
+                    <a href="public/pdfs/the-debt-trap-complete-guide.pdf" download>Complete research guide</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="#guide">Library</a>
+                    <a href="#course">Course</a>
+                    <a href="#reports">Reports</a>
+                    <a href="#pdc">PDC model</a>
+                </div>
+                <div class="footer-col">
+                    <h5>If you need help now</h5>
+                    <a href="https://cms.rbi.org.in" target="_blank" rel="noopener">RBI complaints · cms.rbi.org.in</a>
+                    <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>
+                    <a href="tel:1930">Cyber helpline · 1930</a>
+                </div>
+            </div>
+            <p class="footer-note">Every figure on this site traces to a cited source: RBI Digital Lending Directions, OECD/INFE, and De-Trap's own published research.</p>
+            <div class="footer-bottom">
+                <span>© 2026 De-Trap Initiative. Research &amp; outreach.</span>
+                <a href="#top" class="to-top">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+</main>
+
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.querySelector('#webgl');
+let scene, camera, renderer;
+let gltfModel;     // the coin (spin group)
+let modelPivot;    // pivot group for perfect center-rotation
+let coinMesh;
+const clock = new THREE.Clock();
+let currentScroll = 0;
+
+let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+
+let cursorX = window.innerWidth / 2,  cursorY = window.innerHeight / 2;
+let outerCursorX = window.innerWidth / 2, outerCursorY = window.innerHeight / 2;
+
+let bgMaterial;
+const shaderUniforms = {
+    uTime: { value: 0 },
+    uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    uMouse: { value: new THREE.Vector2(0, 0) },
+    uScroll: { value: 0 }
+};
+
+let sparkParticles;
+const sparkCount = 450;
+const sparkData = [];
+
+const sizes = { width: window.innerWidth, height: window.innerHeight };
+
+// Elements of the WebGL stage that fade out when the reader reaches the content.
+let heroFadeEls = [];
+
+// Language state + refresh hooks assigned by the interactive widgets
+let LANG = 'en';
+let recomputeCalc = null;
+let updateMeter = null;
+
+/* ===================== Scene / camera ===================== */
+function initScene() {
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    scene.fog = new THREE.FogExp2('#000000', 0.01);
+
+    camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100);
+    camera.position.set(0, 0.2, 3.0);
+    scene.add(camera);
+
+    createBackgroundShader();
+
+    renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance"
+    });
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 2.2;
+}
+
+/* ===================== Lighting (chiaroscuro) ===================== */
+function initLights() {
+    const ambientLight = new THREE.AmbientLight('#ffffff', 0.1);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.SpotLight('#ffffff', 18.0);
+    keyLight.position.set(4, 6, 3);
+    keyLight.angle = Math.PI / 4;
+    keyLight.penumbra = 0.9;
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 2048;
+    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.camera.near = 1.0;
+    keyLight.shadow.camera.far = 15;
+    keyLight.shadow.bias = -0.001;
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight('#e3f2ff', 10.0);
+    rimLight.position.set(-5, 3, -4);
+    scene.add(rimLight);
+
+    const fillLight = new THREE.DirectionalLight('#fff3e6', 0.8);
+    fillLight.position.set(-2, -4, 2);
+    scene.add(fillLight);
+}
+
+/* ===================== Forge sparks ===================== */
+function createSparkTexture() {
+    const c = document.createElement('canvas');
+    c.width = 16; c.height = 16;
+    const ctx = c.getContext('2d');
+    const gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    gradient.addColorStop(0.25, 'rgba(255, 255, 255, 0.85)');
+    gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.3)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 16, 16);
+    return new THREE.CanvasTexture(c);
+}
+
+function createSparks() {
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(sparkCount * 3);
+    const colors = new Float32Array(sparkCount * 3);
+
+    for (let i = 0; i < sparkCount; i++) {
+        const x = (Math.random() - 0.5) * 6.5;
+        const y = (Math.random() - 0.5) * 5.0 - 0.5;
+        const z = (Math.random() - 0.5) * 6.5;
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        if (Math.random() < 0.6) {
+            colors[i * 3] = 1.0;
+            colors[i * 3 + 1] = 0.4 + Math.random() * 0.15;
+            colors[i * 3 + 2] = 0.05 + Math.random() * 0.1;
+        } else {
+            colors[i * 3] = 0.55 + Math.random() * 0.15;
+            colors[i * 3 + 1] = 0.82 + Math.random() * 0.12;
+            colors[i * 3 + 2] = 1.0;
+        }
+
+        sparkData.push({
+            speedX: (Math.random() - 0.5) * 0.4,
+            speedY: 0.15 + Math.random() * 0.3,
+            speedZ: (Math.random() - 0.5) * 0.4,
+            swaySpeed: 0.5 + Math.random() * 1.5,
+            swayRadius: 0.05 + Math.random() * 0.15,
+            phase: Math.random() * Math.PI * 2
+        });
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 0.025,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        map: createSparkTexture()
+    });
+
+    sparkParticles = new THREE.Points(geometry, material);
+    scene.add(sparkParticles);
+}
+
+/* ===================== The centerpiece: a bronze ₹ coin ===================== */
+function drawArcText(ctx, str, cx, cy, radius, centerAngle, spread, flip) {
+    const n = str.length;
+    for (let i = 0; i < n; i++) {
+        const t = n > 1 ? (i / (n - 1) - 0.5) : 0;
+        const a = centerAngle + t * spread * (flip ? -1 : 1);
+        ctx.save();
+        ctx.translate(cx + Math.cos(a) * radius, cy + Math.sin(a) * radius);
+        ctx.rotate(a + (flip ? -Math.PI / 2 : Math.PI / 2));
+        ctx.fillText(str[i], 0, 0);
+        ctx.restore();
+    }
+}
+
+function createCoinFaceTexture() {
+    const S = 1024;
+    const c = document.createElement('canvas');
+    c.width = S; c.height = S;
+    const ctx = c.getContext('2d');
+    // mid-grey base = neutral height for the bump map
+    ctx.fillStyle = '#7d7d7d';
+    ctx.fillRect(0, 0, S, S);
+    const cx = S / 2, cy = S / 2;
+
+    // raised outer ring
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 10;
+    ctx.beginPath(); ctx.arc(cx, cy, 470, 0, Math.PI * 2); ctx.stroke();
+    ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.arc(cx, cy, 300, 0, Math.PI * 2); ctx.stroke();
+
+    // knurl ticks between the two rings
+    ctx.strokeStyle = '#e6e6e6';
+    ctx.lineWidth = 4;
+    for (let i = 0; i < 120; i++) {
+        const a = (i / 120) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(a) * 452, cy + Math.sin(a) * 452);
+        ctx.lineTo(cx + Math.cos(a) * 470, cy + Math.sin(a) * 470);
+        ctx.stroke();
+    }
+
+    // big embossed rupee
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '700 460px Georgia, "Times New Roman", serif';
+    ctx.fillText('₹', cx, cy + 20);
+
+    // ring text
+    ctx.font = '700 58px Georgia, serif';
+    drawArcText(ctx, 'DE · TRAP', cx, cy, 385, -Math.PI / 2, 0.9, false);
+    ctx.font = '600 40px Georgia, serif';
+    drawArcText(ctx, "FREE MONEY ISN'T FREE", cx, cy, 385, Math.PI / 2, 1.55, true);
+
+    const tex = new THREE.CanvasTexture(c);
+    tex.anisotropy = 16;
+    return tex;
+}
+
+function createEdgeTexture() {
+    const w = 1024, h = 64;
+    const c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#7d7d7d';
+    ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 5;
+    for (let x = 0; x < w; x += 12) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.repeat.set(1, 1);
+    return tex;
+}
+
+function createCoin() {
+    const faceTex = createCoinFaceTexture();
+    const edgeTex = createEdgeTexture();
+
+    const bronze = 0xb0763a;
+
+    const faceMat = new THREE.MeshStandardMaterial({
+        color: bronze,
+        metalness: 0.92,
+        roughness: 0.42,
+        bumpMap: faceTex,
+        bumpScale: 0.9,
+        emissive: 0x3a1e08,
+        emissiveMap: faceTex,
+        emissiveIntensity: 0.35,
+        flatShading: false
+    });
+    const edgeMat = new THREE.MeshStandardMaterial({
+        color: bronze,
+        metalness: 0.92,
+        roughness: 0.5,
+        bumpMap: edgeTex,
+        bumpScale: 0.4
+    });
+
+    // Cylinder material order: [ side, top, bottom ]
+    const geo = new THREE.CylinderGeometry(1.5, 1.5, 0.3, 96, 1);
+    coinMesh = new THREE.Mesh(geo, [edgeMat, faceMat, faceMat]);
+    coinMesh.rotation.x = Math.PI / 2; // faces point toward camera (+Z)
+    coinMesh.castShadow = true;
+    coinMesh.receiveShadow = true;
+
+    gltfModel = new THREE.Group();        // spin group (kept name for parity)
+    gltfModel.add(coinMesh);
+
+    modelPivot = new THREE.Group();
+    scene.add(modelPivot);
+    modelPivot.add(gltfModel);
+    modelPivot.position.y = -0.4;
+}
+
+/* ===================== Background liquid-metal wave shader ===================== */
+function createBackgroundShader() {
+    const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `;
+
+    const fragmentShader = `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform vec2 uResolution;
+        uniform vec2 uMouse;
+        uniform float uScroll;
+
+        float hash(float n) { return fract(sin(n) * 43758.5453123); }
+        float noise(in vec3 x) {
+            vec3 p = floor(x);
+            vec3 f = fract(x);
+            f = f*f*(3.0-2.0*f);
+            float n = p.x + p.y*57.0 + 113.0*p.z;
+            return mix(mix(mix(hash(n+  0.0), hash(n+  1.0), f.x),
+                           mix(hash(n+ 57.0), hash(n+ 58.0), f.x), f.y),
+                       mix(mix(hash(n+113.0), hash(n+114.0), f.x),
+                           mix(hash(n+170.0), hash(n+171.0), f.x), f.y), f.z);
+        }
+
+        void main() {
+            vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+            float aspect = uResolution.x / uResolution.y;
+
+            float time = uTime * 0.08;
+            float scroll = uScroll;
+
+            float angle1 = 0.6;
+            float angle2 = -0.7;
+            float angle3 = 1.2;
+
+            float freq1 = 2.4;
+            float freq2 = 3.2;
+            float freq3 = 4.0;
+
+            vec2 warpedUv = uv;
+
+            float scrollDeform = scroll * 5.0;
+
+            warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
+            warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+
+            warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+            warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
+
+            vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+            vec2 mouseShift = vec2(uMouse.x * aspect * 0.05, uMouse.y * 0.05);
+            warpedUv += scrollDrift + mouseShift;
+
+            vec2 dir1 = vec2(cos(angle1), sin(angle1));
+            vec2 dir2 = vec2(cos(angle2), sin(angle2));
+            vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+            float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.0);
+            float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.4 + w1 * 0.4);
+            float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
+
+            float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+
+            float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
+            float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
+            float crest = wideSheen * 0.5 + crispSpecular * 0.9;
+
+            vec3 c0_shadow = vec3(0.0010, 0.0006, 0.0004);
+            vec3 c0_wave1  = vec3(0.085, 0.040, 0.015);
+            vec3 c0_wave2  = vec3(0.050, 0.022, 0.008);
+            vec3 c0_crest  = vec3(0.45, 0.30, 0.18);
+
+            vec3 c1_shadow = vec3(0.0004, 0.0006, 0.0012);
+            vec3 c1_wave1  = vec3(0.015, 0.035, 0.065);
+            vec3 c1_wave2  = vec3(0.008, 0.020, 0.045);
+            vec3 c1_crest  = vec3(0.18, 0.35, 0.55);
+
+            float t = smoothstep(0.0, 1.0, scroll);
+            vec3 colShadow = mix(c0_shadow, c1_shadow, t);
+            vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
+            vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
+            vec3 colCrest  = mix(c0_crest, c1_crest, t);
+
+            vec3 color = colShadow;
+            color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
+            color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+
+            color += colCrest * crest * 1.4;
+
+            float vignette = 1.0 - dot(uv, uv) * 0.12;
+            color *= vignette;
+
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `;
+
+    bgMaterial = new THREE.ShaderMaterial({
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        uniforms: shaderUniforms,
+        depthWrite: false,
+        depthTest: false
+    });
+
+    const bgGeometry = new THREE.PlaneGeometry(30, 30);
+    const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
+    bgMesh.position.set(0.0, 0.0, -8.0);
+    bgMesh.renderOrder = -10;
+    camera.add(bgMesh);
+}
+
+/* ===================== Resize ===================== */
+function onWindowResize() {
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    if (shaderUniforms) shaderUniforms.uResolution.value.set(sizes.width, sizes.height);
+}
+
+/* ===================== Pointer ===================== */
+window.addEventListener('mousemove', (event) => {
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    const cursorInner = document.querySelector('.cursor-inner');
+    if (cursorInner) { cursorInner.style.left = `${cursorX}px`; cursorInner.style.top = `${cursorY}px`; }
+    targetMouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    targetMouseY = (event.clientY / window.innerHeight) * 2 - 1;
+});
+window.addEventListener('resize', onWindowResize);
+
+/* ===================== Per-letter title split ===================== */
+function splitTitlesIntoChars() {
+    const titles = document.querySelectorAll('.slide-title');
+    // grapheme segmentation keeps Devanagari clusters (base + matra) intact
+    const hasSeg = (typeof Intl !== 'undefined' && Intl.Segmenter);
+    const seg = hasSeg ? new Intl.Segmenter(LANG === 'hi' ? 'hi' : 'en', { granularity: 'grapheme' }) : null;
+    titles.forEach(title => {
+        const text = title.innerHTML;
+        let newHTML = '';
+        let delayCounter = 0;
+        const parts = text.split(/(<br\s*\/?>)/i);
+        parts.forEach(part => {
+            if (part.toLowerCase().startsWith('<br')) {
+                newHTML += part;
+            } else {
+                const units = seg ? [...seg.segment(part)].map(s => s.segment) : Array.from(part);
+                units.forEach(u => {
+                    if (u === ' ') {
+                        newHTML += ' ';
+                    } else {
+                        newHTML += `<span class="char" style="transition-delay: ${delayCounter * 0.035}s">${u}</span>`;
+                        delayCounter++;
+                    }
+                });
+            }
+        });
+        title.innerHTML = newHTML;
+    });
+}
+
+/* ===================== Grid dots ===================== */
+function updateGridDots(scroll) {
+    const dots = document.querySelectorAll('.grid-dot');
+    dots.forEach((dot, i) => {
+        const startY = (i * 17) % 80 + 10;
+        let speed = 90 + (i * 55) % 180;
+        if (i % 2 === 0) speed = -speed;
+        let y = startY + scroll * speed;
+        y = ((y % 100) + 100) % 100;
+        dot.style.top = `${y}%`;
+    });
+}
+
+/* ===================== Slides + stories progress ===================== */
+function updateSlides(scroll) {
+    const slide1 = document.getElementById('slide-1');
+    const slide2 = document.getElementById('slide-2');
+    const slide3 = document.getElementById('slide-3');
+    const slide4 = document.getElementById('slide-4');
+
+    for (let i = 1; i <= 4; i++) {
+        const fill = document.getElementById(`dash-fill-${i}`);
+        if (fill) {
+            const start = (i - 1) * 0.25;
+            const end = i * 0.25;
+            let progress = (scroll - start) / (end - start);
+            progress = Math.max(0, Math.min(1, progress));
+            fill.style.height = `${progress * 100}%`;
+        }
+    }
+
+    function isActive(val, start, end) { return val >= start && val <= end; }
+
+    if (slide1) slide1.classList.toggle('active', isActive(scroll, -0.10, 0.12));
+    if (slide2) {
+        const active2 = isActive(scroll, 0.28, 0.40);
+        slide2.classList.toggle('active', active2);
+        const slide2Img = document.getElementById('slide-2-img');
+        if (slide2Img) slide2Img.classList.toggle('active', active2);
+    }
+    if (slide3) slide3.classList.toggle('active', isActive(scroll, 0.56, 0.68));
+    if (slide4) slide4.classList.toggle('active', isActive(scroll, 0.84, 1.05));
+}
+
+/* ===================== Navigation ===================== */
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const targetScrolls = [0.0, 0.34, 0.62, 0.94];
+    navLinks.forEach((link, index) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const targetY = maxScroll * targetScrolls[index];
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+        });
+    });
+}
+
+/* ===================== Animation loop ===================== */
+function animate() {
+    requestAnimationFrame(animate);
+    const deltaTime = clock.getDelta();
+
+    const scrollTop = window.scrollY !== undefined ? window.scrollY
+        : (window.pageYOffset !== undefined ? window.pageYOffset : document.documentElement.scrollTop);
+    // The cinematic orbit is mapped ONLY to the 900vh runway, so the editorial
+    // content below can scroll freely without disturbing the final frame.
+    const runwayEl = document.querySelector('.scroll-runway');
+    const cineMax = runwayEl ? (runwayEl.offsetHeight - window.innerHeight)
+                             : (document.documentElement.scrollHeight - window.innerHeight);
+    let targetScroll = cineMax > 0 ? scrollTop / cineMax : 0;
+    targetScroll = Math.max(0, Math.min(1, targetScroll));
+
+    // Fade the WebGL stage out as the reader crosses into the content page.
+    const overshoot = scrollTop - cineMax;
+    const heroOpacity = overshoot > 0 ? Math.max(0, 1 - overshoot / (window.innerHeight * 0.85)) : 1;
+    heroFadeEls.forEach(el => { if (el) el.style.opacity = heroOpacity; });
+
+    currentScroll += (targetScroll - currentScroll) * 0.025;
+
+    mouseX += (targetMouseX - mouseX) * 0.05;
+    mouseY += (targetMouseY - mouseY) * 0.05;
+
+    outerCursorX += (cursorX - outerCursorX) * 0.2;
+    outerCursorY += (cursorY - outerCursorY) * 0.2;
+    const cursorOuter = document.querySelector('.cursor-outer');
+    if (cursorOuter) { cursorOuter.style.left = `${outerCursorX}px`; cursorOuter.style.top = `${outerCursorY}px`; }
+
+    if (modelPivot) {
+        modelPivot.rotation.y = mouseX * 0.25;
+        modelPivot.rotation.x = mouseY * 0.15;
+    }
+    // slow shimmer spin of the coin in its own plane
+    if (gltfModel) gltfModel.rotation.z += 0.0016;
+
+    if (sparkParticles) {
+        const positions = sparkParticles.geometry.attributes.position.array;
+        const time = clock.getElapsedTime();
+        const scrollVelocity = Math.abs(targetScroll - currentScroll);
+        const speedMultiplier = 1.0 + scrollVelocity * 9.0;
+        const turbulence = scrollVelocity * 0.8;
+
+        for (let i = 0; i < sparkCount; i++) {
+            const idx = i * 3;
+            const data = sparkData[i];
+            positions[idx]     += data.speedX * deltaTime * speedMultiplier;
+            positions[idx + 1] += data.speedY * deltaTime * speedMultiplier;
+            positions[idx + 2] += data.speedZ * deltaTime * speedMultiplier;
+
+            const currentSway = data.swayRadius * (1.0 + turbulence * 4.0);
+            positions[idx]     += Math.sin(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+            positions[idx + 2] += Math.cos(time * data.swaySpeed + data.phase) * currentSway * deltaTime;
+
+            if (positions[idx + 1] > 3.0 || Math.abs(positions[idx]) > 3.5 || Math.abs(positions[idx + 2]) > 3.5) {
+                positions[idx + 1] = -2.5;
+                positions[idx]     = (Math.random() - 0.5) * 3.0;
+                positions[idx + 2] = (Math.random() - 0.5) * 3.0;
+            }
+        }
+        sparkParticles.geometry.attributes.position.needsUpdate = true;
+    }
+
+    const phi = currentScroll * Math.PI * 2.0;
+    const y = 0.35 + Math.sin(currentScroll * Math.PI) * 0.8;
+    const radius = 4.2 - Math.sin(currentScroll * Math.PI) * 0.6;
+    const x = radius * Math.sin(phi);
+    const z = radius * Math.cos(phi);
+
+    let transitionProgress = Math.min(1.0, currentScroll / 0.28);
+    let easeFactor = (Math.cos(transitionProgress * Math.PI) + 1.0) * 0.5;
+    const lookAtXOffset = -0.9 * easeFactor;
+    const targetLookAt = new THREE.Vector3(lookAtXOffset, -0.15, 0);
+    const targetPos = new THREE.Vector3(x, y, z);
+    camera.position.lerp(targetPos, 0.025);
+    camera.lookAt(targetLookAt);
+
+    if (shaderUniforms) {
+        shaderUniforms.uTime.value = clock.getElapsedTime();
+        shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+        shaderUniforms.uScroll.value = currentScroll;
+    }
+
+    updateSlides(currentScroll);
+    updateGridDots(currentScroll);
+    if (heroOpacity > 0.001) renderer.render(scene, camera); // skip GPU work while reading
+}
+
+/* ===================== Content-page interactions ===================== */
+function setupContentPage() {
+    // WebGL layers that fade as the reader crosses into the editorial content
+    heroFadeEls = [
+        canvas,
+        document.querySelector('.cinematic-container'),
+        document.querySelector('.grid-horizontal-line'),
+        document.querySelector('.grid-lines')
+    ];
+    heroFadeEls.forEach(el => { if (el) el.style.transition = 'opacity 0.15s linear'; });
+
+    // Smooth in-page anchors for the content nav, footer and hero CTA
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        // leave the cinematic nav-links to their own scroll logic
+        if (link.classList.contains('nav-link')) return;
+        link.addEventListener('click', (e) => {
+            const id = link.getAttribute('href');
+            if (id === '#top' || id === '#') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ---- Scroll reveal + staggered cards (progressive enhancement) ----
+    ['.guide-grid', '.modules', '.reports-grid', '.pdc-grid', '.zones', '.board-grid', '.chips']
+        .forEach(sel => document.querySelectorAll(sel).forEach(g => g.classList.add('stagger')));
+    const contentEl = document.getElementById('site-content');
+    const sections = [...document.querySelectorAll('#site-content .section')];
+    contentEl.classList.add('reveal-on');   // opt in to the hidden→reveal states
+    const revealVisible = () => {
+        const vh = window.innerHeight;
+        sections.forEach(s => {
+            if (s.classList.contains('in')) return;
+            const r = s.getBoundingClientRect();
+            if (r.top < vh * 0.88 && r.bottom > 0) s.classList.add('in');
+        });
+    };
+    window.addEventListener('scroll', revealVisible, { passive: true });
+    window.addEventListener('resize', revealVisible);
+    // IntersectionObserver as an enhancement; the scroll handler is the guarantee
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        sections.forEach(s => io.observe(s));
+    }
+    revealVisible();
+    // Safety net: never leave content hidden — force-reveal after 4s
+    setTimeout(() => sections.forEach(s => s.classList.add('in')), 4000);
+
+    // ---- True-cost calculator ----
+    setupCalculator();
+
+    // ---- Debt-risk meter ----
+    setupDebtMeter();
+
+    // Workshop form — no backend; confirm inline
+    const form = document.getElementById('workshop-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const hi = LANG === 'hi';
+            const school = (form.querySelector('input[name="school"]').value || (hi ? 'आपके स्कूल' : 'your school')).trim();
+            const h = document.createElement('h3');
+            h.textContent = hi ? 'अनुरोध मिल गया' : 'Request received';
+            const p = document.createElement('p');
+            p.className = 'form-done';
+            p.textContent = hi
+                ? `धन्यवाद — हमने ${school} के लिए अनुरोध नोट कर लिया है और डी-ट्रैप टीम कुछ कार्यदिवसों में संपर्क करेगी।`
+                : `Thank you — we've noted the request for ${school} and the De-Trap team will reach out within a few working days.`;
+            form.replaceChildren(h, p);
+        });
+    }
+}
+
+/* ===================== True-cost calculator ===================== */
+function setupCalculator() {
+    const inAmount = document.getElementById('in-amount');
+    const inFee = document.getElementById('in-fee');
+    const inDays = document.getElementById('in-days');
+    if (!inAmount) return;
+
+    const arc = document.getElementById('gauge-arc');
+    const numEl = document.getElementById('gauge-num');
+    const gcApr = document.getElementById('gc-apr');
+    const CIRC = 754; // 2π·120
+    const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+
+    let displayApr = 122;   // animated value
+    let targetApr = 122;
+
+    function recompute() {
+        const amount = +inAmount.value, fee = +inFee.value, days = +inDays.value;
+        const daySuffix = LANG === 'hi' ? ' दिन' : (days === 1 ? ' day' : ' days');
+        document.getElementById('sv-amount').textContent = inr(amount);
+        document.getElementById('sv-fee').textContent = inr(fee);
+        document.getElementById('sv-days').textContent = days + daySuffix;
+        document.getElementById('cl-amount').textContent = inr(amount);
+        document.getElementById('cl-fee').textContent = inr(fee);
+        document.getElementById('cl-days').textContent = days + daySuffix;
+        // periodic-rate method: (fee/amount) per `days`, compounded across the year's periods
+        targetApr = (fee / amount) * (365 / days) * 100;
+    }
+    recomputeCalc = recompute;
+
+    function tick() {
+        displayApr += (targetApr - displayApr) * 0.15;
+        const shown = Math.round(displayApr);
+        numEl.textContent = shown + '%';
+        const gc = document.getElementById('gc-apr');   // re-fetched: caption may be re-rendered on language switch
+        if (gc) gc.textContent = shown + '%';
+        // colour shifts hotter as the rate climbs
+        const hot = Math.min(1, displayApr / 300);
+        numEl.setAttribute('fill', hot > 0.55 ? '#ff9a9a' : '#fff6ed');
+        // fill up to 90% of the ring, scaled so 400% ≈ full
+        const frac = Math.min(1, displayApr / 400);
+        arc.setAttribute('stroke-dasharray', (frac * CIRC * 0.9) + ' ' + CIRC);
+        requestAnimationFrame(tick);
+    }
+
+    [inAmount, inFee, inDays].forEach(el => el.addEventListener('input', recompute));
+    recompute();
+    tick();
+}
+
+/* ===================== Debt-risk meter ===================== */
+function setupDebtMeter() {
+    const wrap = document.getElementById('meter-checks');
+    if (!wrap) return;
+    const boxes = wrap.querySelectorAll('input[type="checkbox"]');
+    const fill = document.getElementById('meter-fill');
+    const zoneEl = document.getElementById('meter-zone');
+    const scoreEl = document.getElementById('meter-score');
+    const MAX = 20;
+
+    const ZONES = { en: ['Clear', 'Exposed', 'Trapped'], hi: ['सुरक्षित', 'जोखिम में', 'फंसा हुआ'] };
+    function update() {
+        let score = 0;
+        boxes.forEach(b => { if (b.checked) score += +b.dataset.pts; });
+        fill.style.width = Math.min(100, (score / MAX) * 100) + '%';
+        scoreEl.textContent = LANG === 'hi' ? (score + ' / ' + MAX + ' अंक') : (score + ' of ' + MAX + ' points');
+        let idx = 0, cls = 'green';
+        if (score >= 12) { idx = 2; cls = 'red'; }
+        else if (score >= 5) { idx = 1; cls = 'yellow'; }
+        zoneEl.textContent = ZONES[LANG === 'hi' ? 'hi' : 'en'][idx];
+        zoneEl.className = 'meter-zone ' + cls;
+    }
+    updateMeter = update;
+    boxes.forEach(b => b.addEventListener('change', update));
+    update();
+}
+
+/* ===================== Hindi / English translation ===================== */
+// Each entry maps a CSS selector to the Hindi string(s) applied across the
+// matched nodes in order. English is captured live at load, so only Hindi is
+// hardcoded here. `html` entries use innerHTML; `checktext` entries replace only
+// the trailing text node (preserving a child <input>).
+const T = [
+    // --- cinematic header + slides ---
+    { sel: '.header-nav .nav-link', hi: ['चारा', 'लागत', 'संकेत', 'निकास'] },
+    { sel: '.contact-btn', html: true, hi: ['वर्कबुक <span class="btn-circle"></span>'] },
+    { sel: '#slide-1 .slide-title', html: true, hi: ['मुफ़्त पैसा <br>मुफ़्त नहीं'] },
+    { sel: '#slide-1 .col-1', hi: ['एक छात्र-संचालित पहल जो कक्षा 9–12 के विद्यार्थियों को BNPL, इंस्टेंट लोन ऐप्स और “3 आसान किश्तों में भुगतान” की महीन शर्तें पढ़ना सिखाती है — इससे पहले कि ये उन्हें पढ़ लें।'] },
+    { sel: '#slide-1 .col-2', hi: ['हम उलझे हुए क्रेडिट उत्पादों को साठ सेकंड के गणित में बदल देते हैं, जिसे कोई भी कर सके। कोई लॉगिन नहीं, कोई ईमेल दीवार नहीं — बस वे आंकड़े जो वे आपसे कभी नहीं गिनवाना चाहते।'] },
+    { sel: '#slide-2 .slide-title', html: true, hi: ['महीन शर्तें <br>पढ़ें'] },
+    { sel: '#slide-2 .slide-desc', hi: ['“सिर्फ़ ₹100” के पीछे छिपी असली सालाना लागत 122% है। हम दिखाते हैं कि असल में पैसा कौन उधार दे रहा है, फ़ीस वाकई क्या है, और एक भी भुगतान चूकते ही क्या होता है।'] },
+    { sel: '#slide-3 .slide-title', html: true, hi: ['खतरे के संकेत'] },
+    { sel: '#slide-3 .slide-desc', hi: ['प्रेडिक्ट, डिटेक्ट, करेक्ट — जोखिम पर बात करने का डी-ट्रैप का अपना ढांचा। ऑफ़रों के पीछे की हेरफेर चालें पहचानें, और वे हरे–पीले–लाल संकेत जो किसी को चुपचाप कगार की ओर धकेलते हैं।'] },
+    { sel: '#slide-4 .slide-title', html: true, hi: ['आप फंसे <br>नहीं हैं'] },
+    { sel: '#slide-4 .slide-desc', hi: ['पहले से मुश्किल में हैं? सुरक्षित तरीके से बाहर निकलने का रास्ता है। जाल कभी पैसे का नहीं था — यह चुप्पी का था। छह मॉड्यूल, एक वर्कबुक, छात्रों द्वारा, छात्रों के लिए।'] },
+
+    // --- content nav ---
+    { sel: '.cnav-link', hi: ['लाइब्रेरी', 'कोर्स', 'रिपोर्ट', 'PDC', 'स्कूल', 'परिचय'] },
+    { sel: '.cnav-cta', hi: ['वर्कबुक पाएं'] },
+
+    // --- true-cost calculator ---
+    { sel: '#truecost .eyebrow-c', hi: ['साठ सेकंड का गणित'] },
+    { sel: '#truecost h2', hi: ['किसी भी “छोटी फ़ीस” को उसकी असली सालाना लागत में बदलें'] },
+    { sel: '#truecost .lead', hi: ['यही वह एक गणना है जो लगभग सब कुछ पकड़ लेती है। किसी भी देखे हुए ऑफ़र के आंकड़े खींचिए और ईमानदार दर सामने आते देखिए।'] },
+    { sel: '#truecost .calc-line', html: true, hi: ['उधार लें <b id="cl-amount">₹2,000</b>, इसे <b id="cl-days">15 दिन</b> रखने के लिए <b id="cl-fee">₹100</b> फ़ीस दें।'] },
+    { sel: '#truecost .slabel span:first-child', hi: ['उधार ली रकम', 'ली गई फ़ीस', 'कितने दिन रखा'] },
+    { sel: '#truecost .gauge-caption', html: true, hi: ['वह “छोटी” फ़ीस असल में <b id="gc-apr">122%</b> सालाना है — अक्सर क्रेडिट कार्ड से भी ज़्यादा, कभी-कभी कई गुना।'] },
+
+    // --- guide library ---
+    { sel: '#guide .eyebrow-c', hi: ['01 · लाइब्रेरी'] },
+    { sel: '#guide h2', hi: ['डेट ट्रैप गाइड लाइब्रेरी'] },
+    { sel: '#guide .lead', hi: ['डी-ट्रैप द्वारा प्रकाशित सब कुछ, एक ही जगह। कोई लॉगिन नहीं, कोई ईमेल दीवार नहीं। डाउनलोड करें, प्रिंट करें, या किसी दोस्त को दें।'] },
+    { sel: '#guide .guide-tag', hi: ['वर्कबुक · कक्षा 8–12', 'संदर्भ', 'अनुसंधान'] },
+    { sel: '#guide .guide-card h3', hi: ['द डेट ट्रैप: एक सर्वाइवल गाइड', 'सरकारी योजनाएं एवं कानूनी संदर्भ', 'द डेट ट्रैप: पूर्ण अनुसंधान गाइड'] },
+    { sel: '#guide .guide-card p', hi: ['पूरी सचित्र वर्कबुक। बारह पृष्ठ, एक पेन, वह गणित जो आपको जाल से बचाता है।', 'आरबीआई के डिजिटल लेंडिंग नियम, रिकवरी एजेंटों के खिलाफ़ आपके अधिकार, और शिकायत कहां करें।', 'वर्कबुक के पीछे का पूरा अनुसंधान, स्रोतों सहित, शिक्षकों और समीक्षकों के लिए।'] },
+    { sel: '#guide .pages', hi: ['12 पृष्ठ · PDF', '9 पृष्ठ · PDF', '27 पृष्ठ · PDF'] },
+    { sel: '#guide .dl-btn', hi: ['डाउनलोड', 'डाउनलोड', 'डाउनलोड'] },
+
+    // --- course ---
+    { sel: '#course .eyebrow-c', hi: ['02 · मुख्य कोर्स'] },
+    { sel: '#course h2', hi: ['वित्तीय साक्षरता, छह पड़ावों में'] },
+    { sel: '#course .lead', hi: ['एक छोटा कोर्स जिसे आप एक ही बैठक में या एक क्लास पीरियड में पूरा कर सकते हैं। मॉड्यूल दर मॉड्यूल आगे बढ़ें — इस साइट का हर जाल इन्हीं विचारों से बना है।'] },
+    { sel: '#course .module-titles h3', hi: ['क्रेडिट क्या है', 'ब्याज़ असल में कैसे काम करता है', 'तीन-पक्षीय ऋण संरचना', 'हेरफेर की चालें पहचानना', 'खतरे के संकेत और PDC मॉडल', 'अगर आप पहले से मुश्किल में हैं'] },
+    { sel: '#course .module-short', hi: ['क्रेडिट, कर्ज़ और ब्याज़', 'साधारण बनाम चक्रवृद्धि', 'असल में उधार कौन दे रहा है', 'दिमागी जाल', 'हरा, पीला, लाल', 'सुरक्षित तरीके से बाहर निकलना'] },
+    { sel: '#course .module-intro', hi: [
+        'आपने लगभग निश्चित रूप से पहले भी पैसा उधार लिया है — “3 किश्तों में भुगतान” चेकआउट, दोस्त से ₹200, अभी मंगाया और बाद में चुकाया खाना। यह मॉड्यूल आपको वे तीन शब्द देता है जो इन सबका वर्णन करते हैं।',
+        'दो लोन एक ही दर का विज्ञापन कर सकते हैं और फिर भी आपको हज़ारों रुपये के अंतर से पड़ सकते हैं। फ़र्क इसमें है कि वह दर किस पर लगती है — जो आपने पहले उधार लिया, या जो अभी बकाया है।',
+        'आपके फ़ोन के ऐप के बारे में सबसे ज़रूरी बात: वह आमतौर पर ऋणदाता नहीं होता। भारतीय नियमन डिजिटल लेंडिंग को तीन भूमिकाओं में बांटता है, और यह जानना कि आप किससे बात कर रहे हैं, तय करता है कि शिकायत टिकेगी या दो कंपनियों के बीच भटकती रहेगी।',
+        'इनमें से ज़्यादातर उत्पाद कानूनी हैं और कई लाइसेंसधारी ऋणदाता चलाते हैं। खतरा यह नहीं कि वे आपराधिक हैं — बल्कि यह कि वे इंजीनियर किए गए हैं, और आपने उनका डिज़ाइन नहीं पढ़ा। तीन पैटर्न ज़्यादातर काम कर जाते हैं।',
+        'दो कौशल लगभग सब कुछ पकड़ लेते हैं: किसी भी फ़ीस को सालाना प्रतिशत में बदलें, और किसी भी भुगतान को इससे जांचें कि आप वाकई कितना उठा सकते हैं। यह मॉड्यूल आपको दोनों देता है।',
+        'चुकाने के लिए उधार लेना — यही जाल का बंद होना है। अगर ऐसा हो चुका है, तो यही मॉड्यूल मायने रखता है: आज क्या रोकना है, आपके अधिकार असल में क्या हैं, और किससे संपर्क करना है। इसमें कुछ भी खर्च नहीं होता।'
+    ] },
+
+    // --- reports ---
+    { sel: '#reports .eyebrow-c', hi: ['03 · मूल अनुसंधान'] },
+    { sel: '#reports h2', hi: ['ये प्लेटफ़ॉर्म असल में कैसे काम करते हैं'] },
+    { sel: '#reports .lead', hi: ['भारत में BNPL और इंस्टेंट-लोन उत्पादों पर डी-ट्रैप का अपना विश्लेषण: असल में पैसा कौन उधार दे रहा है, फ़ीस वाकई क्या है, और भुगतान चूकने पर क्या होता है। पूरी जानकारी के लिए कार्ड खोलें।'] },
+    { sel: '#reports .report-cat', hi: ['BNPL', 'BNPL', 'BNPL / पे-लेटर क्रेडिट लाइन', 'इंस्टेंट पर्सनल लोन ऐप', 'प्रीपेड कार्ड + क्रेडिट लाइन → स्मॉल फाइनेंस बैंक'] },
+    { sel: '#reports .pill', hi: ['सक्रिय', 'बंद', 'सक्रिय', 'निगरानी', 'रूपांतरित'] },
+    { sel: '#reports .report-status', hi: ['आरबीआई-लिंक्ड लेंडिंग पार्टनर', 'आरबीआई आदेश से मुख्य चेकआउट बंद, 25 सितंबर 2025', 'लाइसेंसधारी NBFC (PayU Finance) पर चलता है', 'शुद्ध इंस्टेंट-लोन श्रेणी · जांच के दायरे में', 'आरबीआई के जून 2022 PPI सर्कुलर से बदला'] },
+    { sel: '#reports .report-summary', hi: [
+        'अमेज़न केवल लोन सर्विस प्रोवाइडर (LSP) की भूमिका में है। असली क्रेडिट दो आरबीआई-नियमित ऋणदाताओं से आता है, और 2025 में उनमें से एक को अमेज़न द्वारा खरीदना प्लेटफ़ॉर्म और ऋणदाता के बीच की दूरी घटाता है।',
+        'भारत के सबसे शुरुआती BNPL ऐप्स में से एक, जो वन-टैप चेकआउट और चलते “खाता” बही पर बना था। अपने साथियों के विपरीत, Simpl कभी किसी लाइसेंसधारी बैंक या NBFC के ज़रिए नहीं चला — और यही कमी उसे बंद कर गई।',
+        'Simpl का उपयोगी विपरीत उदाहरण: LazyPay एक वन-टैप पे-लेटर बटन जैसा दिखता है, पर उसके पीछे का क्रेडिट ऐप बनाने वाले का नहीं, एक पंजीकृत NBFC का जारी किया होता है। यही एक तथ्य उसे टिकाए रखा जब बिना-लाइसेंस वाले मॉडल बंद हुए।',
+        'चेकआउट पर BNPL नहीं — कुछ ही मिनटों में सीधे आपके खाते में नकद लोन। यही वह श्रेणी है जहां लोन-स्टैकिंग और आक्रामक वसूली इकट्ठा होती है, इसीलिए “किसी भी फ़ीस को सालाना दर में बदलो” कौशल यहीं सबसे ज़रूरी है।',
+        'नियामक द्वारा किसी मॉडल को खत्म करने के बजाय बदलने पर मजबूर करने का सबसे स्पष्ट उदाहरण। Slice ने युवाओं के लिए क्रेडिट लाइन वाला बेहद लोकप्रिय प्रीपेड कार्ड बनाया — फिर एक ही आरबीआई सर्कुलर ने उसकी बुनियाद खींच ली, और कंपनी को दोबारा खड़ा होना पड़ा।'
+    ] },
+    { sel: '#reports .report-card summary', hi: ['पूरा विवरण', 'पूरा विवरण', 'पूरा विवरण', 'पूरा विवरण', 'पूरा विवरण'] },
+
+    // --- PDC ---
+    { sel: '#pdc .eyebrow-c', hi: ['04 · डी-ट्रैप का आंतरिक उपकरण'] },
+    { sel: '#pdc h2', hi: ['PDC मॉडल'] },
+    { sel: '#pdc .lead', hi: ['प्रेडिक्ट, डिटेक्ट, करेक्ट। जोखिम पर बात करने के लिए डी-ट्रैप का अपना गाइडबुक ढांचा — वर्कशॉप के लिए बातचीत की शुरुआत, न कि कोई मान्य शैक्षणिक उपकरण।'] },
+    { sel: '#pdc .pdc-card .num', hi: ['प्रेडिक्ट', 'डिटेक्ट', 'करेक्ट'] },
+    { sel: '#pdc .pdc-card h3', hi: ['पैसा हिलने से पहले', 'जब यह शुरू हो चुका हो', 'अगला ठोस कदम'] },
+    { sel: '#pdc .pdc-card p', hi: ['पैसा हाथ बदलने से पहले उन स्थितियों को पहचानें जो उधार की संभावना बढ़ाती हैं: कोई बचत नहीं, दिखावे का दबाव, अस्पष्ट लागतें।', 'उधार शुरू होने के बाद के संकेत पहचानें: चूकी तारीखें, छिपे ऐप्स, चुकाने के लिए उधार लेना।', 'हर ज़ोन के लिए विशिष्ट अगला कदम, एक चेकलिस्ट से लेकर बस किसी एक बड़े को बताने तक।'] },
+    { sel: '#pdc .zone .zname', hi: ['सुरक्षित', 'जोखिम में', 'फंसा हुआ'] },
+    { sel: '#pdc .zone .zdesc', hi: ['कोई चालू कर्ज़ नहीं, लागतें समझी हुई, एक बचत मौजूद।', 'बिना गणित के उधार, या एक भुगतान पहले ही देर से।', 'चुकाने के लिए उधार, छिपाना, बकाया पैसे को लेकर संपर्क आना।'] },
+    { sel: '#pdc .disclaimer', hi: ['यह वर्कशॉप के लिए बना डी-ट्रैप का शिक्षण उपकरण है, कोई क्लिनिकल या शैक्षणिक डायग्नोस्टिक नहीं। ज़ोन को बातचीत की शुरुआत मानें, फैसला नहीं।'] },
+    { sel: '#pdc .meter-wrap h3', hi: ['आप कहां होंगे?'] },
+    { sel: '#pdc .mhint', hi: ['जो अभी आप पर लागू हो उसे टिक करें। कुछ भी सहेजा नहीं जाता — यह पूरी तरह आपके ब्राउज़र में चलता है।'] },
+    { sel: '#pdc .mcheck', checktext: true, hi: [
+        'मैं अभी किसी को — किसी ऐप, दुकान या दोस्त को — पैसा उधार हूं जो पूरा नहीं चुकाया।',
+        'मुझे नहीं पता कि आज मुझ पर कुल कितना बकाया है, रुपये तक।',
+        'मैं कम से कम एक बार भुगतान में देर कर चुका/चुकी हूं।',
+        'मुझे नहीं पता कि मैंने जो उधार लिया उसकी सालाना % लागत क्या है।',
+        'अगर कल ₹2,000 की आपात ज़रूरत आए, तो मुझे उधार लेना पड़ेगा।',
+        'मैंने परिवार से कोई कर्ज़ या खरीद छिपाई है।',
+        'किसी ने मुझसे बकाया पैसे को लेकर एक से ज़्यादा बार संपर्क किया है।',
+        'मैंने एक जगह चुकाने के लिए दूसरी जगह से उधार लिया है।'
+    ] },
+
+    // --- schools ---
+    { sel: '#schools .eyebrow-c', hi: ['05 · हमारे साथ जुड़ें'] },
+    { sel: '#schools h2', hi: ['अपने स्कूल में डी-ट्रैप लाएं'] },
+    { sel: '#schools .lead', hi: ['दो दिन की वर्कशॉप जो इस वर्कबुक को क्लासरूम अनुभव में बदल देती है — छात्रों द्वारा, छात्रों के लिए।'] },
+    { sel: '#schools .day-block h4', hi: ['पहला दिन', 'दूसरा दिन'] },
+    { sel: '#schools .day-block p', hi: ['छात्र वर्कबुक को लाइव चलाते हैं — गणित, हेरफेर की चालें, और वह ₹100 जो चुपचाप सालाना 122% पड़ता है।', 'छोटे समूह अपनी खुद की “पर्सनल डेट सीलिंग” और एक वॉक-अवे चेकलिस्ट बनाते हैं, फिर असली ऐप्स को हरे–पीले–लाल ज़ोन पर रखते हैं।'] },
+    { sel: '#schools .provide-block h4', hi: ['आपके स्कूल को क्या देना होगा'] },
+    { sel: '#schools .provide-block li', hi: ['दो दिन में एक-एक क्लास पीरियड', 'प्रोजेक्टर वाला एक कमरा', 'कमरे में एक शिक्षक (कोई तैयारी ज़रूरी नहीं)'] },
+    { sel: '#schools .workshop-form h3', hi: ['वर्कशॉप बुक करें'] },
+    { sel: '#schools .fhint', hi: ['अपने स्कूल के बारे में बताएं, हम कुछ कार्यदिवसों में संपर्क करेंगे।'] },
+    { sel: '#schools .field label', hi: ['स्कूल का नाम', 'संपर्क व्यक्ति', 'ईमेल', 'कक्षा स्तर', 'कुछ और जो हमें जानना चाहिए'] },
+    { sel: '#schools .submit-btn', hi: ['वर्कशॉप का अनुरोध करें'] },
+
+    // --- about ---
+    { sel: '#about .eyebrow-c', hi: ['06 · हम कौन हैं'] },
+    { sel: '#about h2', hi: ['डी-ट्रैप के बारे में'] },
+    { sel: '#about .lead', hi: ['डी-ट्रैप इनिशिएटिव एक छात्र-संचालित अनुसंधान और आउटरीच परियोजना है। हम नियम-शर्तें पढ़ते हैं ताकि हमारे साथियों को कठिन तरीके से न सीखना पड़े।'] },
+    { sel: '#about .mlabel', hi: ['हमारा मिशन'] },
+    { sel: '#about .mission-block p', hi: ['जिस कर्ज़ को कोई समझ लेता है, उसमें कोई नहीं फंसता। हम उन उत्पादों के विज्ञापन और उनकी असली लागत के बीच का अंतर पाटने के लिए हैं।'] },
+    { sel: '#about .board-label', hi: ['संस्थापक बोर्ड'] },
+    { sel: '#about .board-role', hi: ['संस्थापक एवं अनुसंधान प्रमुख', 'पाठ्यक्रम एवं वर्कशॉप', 'डिज़ाइन एवं उत्पाद', 'कानूनी एवं नीति अनुसंधान', 'स्कूल साझेदारी'] },
+    { sel: '#about .board-name', hi: ['नाम जल्द घोषित होगा', 'नाम जल्द घोषित होगा', 'नाम जल्द घोषित होगा', 'नाम जल्द घोषित होगा', 'नाम जल्द घोषित होगा'] },
+
+    // --- footer ---
+    { sel: '.footer-tagline', hi: ['जाल कभी पैसे का नहीं था। यह चुप्पी का था।'] },
+    { sel: '.footer-col h5', hi: ['डाउनलोड', 'एक्सप्लोर करें', 'अगर अभी मदद चाहिए'] },
+    { sel: '.footer-col:nth-child(1) a', hi: ['द डेट ट्रैप वर्कबुक', 'सरकारी योजनाएं एवं कानूनी संदर्भ', 'पूर्ण अनुसंधान गाइड'] },
+    { sel: '.footer-col:nth-child(2) a', hi: ['लाइब्रेरी', 'कोर्स', 'रिपोर्ट', 'PDC मॉडल'] },
+    { sel: '.footer-note', hi: ['इस साइट का हर आंकड़ा एक उद्धृत स्रोत से जुड़ा है: आरबीआई डिजिटल लेंडिंग निर्देश, OECD/INFE, और डी-ट्रैप का अपना प्रकाशित अनुसंधान।'] },
+    { sel: '.footer-bottom span', hi: ['© 2026 डी-ट्रैप इनिशिएटिव। अनुसंधान एवं आउटरीच।'] },
+    { sel: '.to-top', hi: ['ऊपर जाएं ↑'] }
+];
+
+function readNode(node, e) {
+    if (e.html) return node.innerHTML;
+    if (e.checktext) return node.lastChild ? node.lastChild.textContent : '';
+    return node.textContent;
+}
+function writeNode(node, e, val) {
+    if (val == null) return;
+    if (e.html) node.innerHTML = val;
+    else if (e.checktext) { if (node.lastChild) node.lastChild.textContent = val; }
+    else node.textContent = val;
+}
+
+function captureEnglish() {
+    T.forEach(e => {
+        const nodes = [...document.querySelectorAll(e.sel)];
+        e.en = nodes.map(n => readNode(n, e));
+    });
+}
+
+function writeLang(lang) {
+    T.forEach(e => {
+        const nodes = [...document.querySelectorAll(e.sel)];
+        const vals = lang === 'hi' ? e.hi : e.en;
+        nodes.forEach((n, i) => writeNode(n, e, vals ? vals[i] : null));
+    });
+}
+
+function applyLang(lang) {
+    LANG = (lang === 'hi') ? 'hi' : 'en';
+    document.documentElement.lang = LANG;
+    document.body.classList.toggle('lang-hi', LANG === 'hi');
+
+    writeLang(LANG);
+    splitTitlesIntoChars();          // titles had raw innerHTML re-applied; re-split
+    updateSlides(currentScroll);     // re-trigger the reveal on the active slide
+
+    const grade = document.querySelector('#schools input[name="grade"]');
+    if (grade) grade.setAttribute('placeholder', LANG === 'hi' ? 'जैसे, कक्षा 9–12' : 'e.g. Grades 9–12');
+
+    if (recomputeCalc) recomputeCalc();
+    if (updateMeter) updateMeter();
+
+    document.querySelectorAll('.lang-toggle').forEach(b => { b.textContent = LANG === 'hi' ? 'EN' : 'हिं'; });
+    try { localStorage.setItem('detrap-lang', LANG); } catch (err) { /* storage blocked */ }
+}
+
+function initI18n() {
+    captureEnglish();
+    document.querySelectorAll('.lang-toggle').forEach(b => {
+        b.addEventListener('click', () => applyLang(LANG === 'hi' ? 'en' : 'hi'));
+    });
+    let saved = 'en';
+    try { saved = localStorage.getItem('detrap-lang') || 'en'; } catch (err) { /* ignore */ }
+    applyLang(saved);
+}
+
+/* ===================== Bootstrap ===================== */
+window.addEventListener('DOMContentLoaded', () => {
+    initScene();
+    initLights();
+    createSparks();
+    createCoin();
+    onWindowResize();
+    setupContentPage();   // wires the calculator / meter refresh hooks first
+    initI18n();           // captures English (raw titles), splits them, applies saved language
+    animate();
+    setupNavigation();
+});
+</script>
+</body>
+</html>
